@@ -314,19 +314,43 @@
                                         <div class="divider-custom-line"></div> -->
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <a href="https://engagedscholarsmap.swarthmore.edu/"><img class="img-fluid rounded mb-5" src="assets/img/Map Still.jpg" alt="" /></a>
+                                    <a href="https://engagedscholarsmap.swarthmore.edu/" target="_blank"><img class="img-fluid rounded mb-5" src="assets/img/Map Still.jpg" alt="" /></a>
                                     <!-- Portfolio Modal - Text-->
                                     <div class="row">
                                         <div class="col-12">
                                             <div id="accordion" class="text-left">
                                                 <div class="card">
-                                                    <div class="card-header" id="sourceCode">
+                                                    <!-- <div class="card-header" id="sourceCode">
                                                         <a href="#">
                                                             <h3 class="mb-0">Source Code</h3>
+                                                            <div class="card-body">
+                                                                Please contact me to access this private repository. 
+                                                            </div>
                                                         </a>
+                                                    </div> -->
+                                                    <div class="card-header" id="headingSourceCode">
+                                                        <h3 class="mb-0">
+                                                            <button class="btn btn-link" data-toggle="collapse" data-target="#sourceCode" aria-expanded="true"
+                                                                aria-controls="collapseOne">
+                                                                <h3>Source Code</h3>
+                                                            </button>
+                                                        </h3>
                                                     </div>
+                                                    
+                                                    <div id="sourceCode" class="collapse show" aria-labelledby="headingSourceCode" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            Please <a href="#contact" id="contactModalLink">contact me</a> to access this private repository. 
+                                                        </div>
+                                                    </div>
+                                                    <!-- Not sure why this not working :  -->
+                                                    <script>
+                                                        $("a#contactModalLink").click(function () {
+                                                                $('#modal').modal('hide')
+                                                            });
+                                                    </script>
+
                                                     <div class="card-header" id="finalProduct">
-                                                        <a href="#">
+                                                        <a href="https://engagedscholarsmap.swarthmore.edu/" target="_blank">
                                                             <h3 class="mb-0">Final Product</h3>
                                                         </a>
                                                     </div>
@@ -334,19 +358,24 @@
                                                         <h3 class="mb-0">
                                                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                                                 aria-controls="collapseOne">
-                                                                <h3>Collapsible Group Item #1</h3>
+                                                                <h3>Description</h3>
                                                             </button>
                                                         </h3>
                                                     </div>
                                             
                                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                            Swarthmore College has an enduring commitment to civic engagement. Civic engagement takes many forms, 
+                                                            whether it be classes designed to have a community impact component, grants for student-lead implemented
+                                                            social entrepreneurship projects, or politically-engaged research. The diversity and range of these projects
+                                                            is a impressive, but it can be difficult to know everything your fellow colleagues are involved in. This was 
+                                                            the impetus to create the Civic Engagement Map. The intention was to design a tool that would allow the user
+                                                            to identify colleagues' projects and issue areas on campus and off. The hope is that this will foster connections
+                                                            between actors who identify similarities in their projects, as well as create a centralized database (which does
+                                                            not currently exist, seeing as there are many chanels at Swarthmore through which to embark on a civic engagement
+                                                            project). The current map prototype allows anyone with a Swarthmore ID to create a profile, log information about 
+                                                            their project, and place pins on the map that relate to their project. The map itself is easily filtered by common 
+                                                            topics and areas of interest. 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -355,18 +384,46 @@
                                                         <h3 class="mb-0">
                                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                                                                 aria-expanded="false" aria-controls="collapseTwo">
-                                                                <h3>Collapsible Group Item #2</h3>
+                                                                <h3>My Role</h3>
                                                             </button>
                                                         </h3>
                                                     </div>
                                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                            I began to be involved in this project in fall, 2019. I worked with <a>Anthony Weed</a> in the IT department 
+                                                            to continue to develope the main features of the site. My role was mostly front-end developement, but supported
+                                                            by a strong grasp on the back-end details. Some of my successfully implemented contributions are as follows: 
+                                                            <br/><br/>
+                                                            <list>
+                                                                <li>Keyword-search of project cards connected to filtering map pins that match keywords</li>
+                                                                <li>Enable admin ability to validate projects that users add</li>
+                                                                <li>Highlight regions of interest and high activity on the map</li>
+                                                                <li>Develop user controls : ability to create and delete a project and connect these actions to database</li>
+                                                                <li>Implement user-friendly page-layout to display detials for a single project</li>
+                                                            </list>
+                                                            My envolvement was not solely technical. I also worked with <a>Nhimesh Ghimire</a> to discuss how broad project 
+                                                            goals could be implemented in the design of the application.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header" id="headingFour">
+                                                        <h3 class="mb-0">
+                                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour"
+                                                                aria-expanded="false" aria-controls="collapseTwo">
+                                                                <h3>Reflection</h3>
+                                                            </button>
+                                                        </h3>
+                                                    </div>
+                                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            This project allowed me to gain hands-on experience with professional tools and to help advance a project 
+                                                            that has a palpable impact on the Swarthmore community. If I could do it again, I would have directly consulted 
+                                                            students and faculty who intend to use the tool to have a first-hand understanding of their needs and ideas. I 
+                                                            have found that it is quite easy to fall into a coding bubble and rely on superiors to interface with the 
+                                                            target community users, but I think it would have been valuable to have been in direct communication 
+                                                            with peers who plan to intend to use the tool to gain their perspectives not only on broad objectives, but 
+                                                            the way these objectives are translated into features. 
                                                         </div>
                                                     </div>
                                                 </div>
@@ -375,18 +432,20 @@
                                                         <!-- <h3 class="mb-0"> -->
                                                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
                                                             aria-expanded="false" aria-controls="collapseThree">
-                                                            <h3>Collapsible Group Item #3</h3>
+                                                            <h3>Coding languages and tools</h3>
                                                         </button>
                                                         <!-- </h3> -->
                                                     </div>
                                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                            <list>
+                                                                <li>HTML, CSS, JS</li>
+                                                                <li>Mapbox API, Mapbox SDK</li>
+                                                                <li>Bootstrap 4</li>
+                                                                <li>ReactJS, React-Bootstrap, React-Mapbox-GL</li>
+                                                                <li>Redux</li>
+                                                                <li>Mongoose ODM</li> 
+                                                            </list>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -433,12 +492,12 @@
                                             <div id="accordion" class="text-left">
                                                 <div class="card">
                                                     <div class="card-header" id="sourceCode">
-                                                        <a href="#">
+                                                        <a href="https://github.com/kkxix/bach-demo-public.github.io">
                                                             <h3 class="mb-0">Source Code</h3>
                                                         </a>
                                                     </div>
                                                     <div class="card-header" id="finalProduct">
-                                                        <a href="#">
+                                                        <a href="https://kkxix.github.io/bach-demo-public.github.io/">
                                                             <h3 class="mb-0">Final Product</h3>
                                                         </a>
                                                     </div>
@@ -446,19 +505,29 @@
                                                         <h3 class="mb-0">
                                                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                                                 aria-controls="collapseOne">
-                                                                <h3>Collapsible Group Item #1</h3>
+                                                                <h3>Description</h3>
                                                             </button>
                                                         </h3>
                                                     </div>
                                             
                                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf
-                                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda
-                                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                            I developed this project as a part of the SPEED program at Swarthmore. Music professor 
+                                                            <a href="https://www.swarthmore.edu/profile/andrew-hauze-04">Andrew Hauze</a> had identified that 
+                                                            his students studying conducting had a hard time finding adequate tools to be develope their listening 
+                                                            skills. For advanced musicians, it is essential to be able to pick out the different melodic and 
+                                                            instrumental strains in a piece of music. His students faced a dilemma in developing this skill ; listening
+                                                            to live performances is ideal for hearing different instrumentations, but the experience is not repeatable. 
+                                                            Listening to recording is repeatable, but difficult to pick out different strains in the audio. Thus, I 
+                                                            worked with him to design an implement a tool that takes a broad database of Bach chorales and allows that 
+                                                            user to control the following : 
+                                                            <list>
+                                                                <li>Instrumentation</li>
+                                                                <li>Volume</li>
+                                                                <li>Pausing and repeating</li>
+                                                                <li>Visualizing the musical score</li>
+                                                                <li>Entering into a more difficult practice mode that groupd alto and tenor parts in terms of control</li>
+                                                            </list>
                                                         </div>
                                                     </div>
                                                 </div>

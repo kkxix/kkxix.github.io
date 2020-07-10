@@ -1,0 +1,22 @@
+{
+  "name": "kkxix.github.io",
+  "version": "1.0.0",
+  "description": "[Freelancer](https://startbootstrap.com/themes/freelancer/) is a one page, freelancer portfolio theme built with [Bootstrap](https://getbootstrap.com/) created by [Start Bootstrap](https://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid, modal windows for each portfolio item, and a working PHP based contact form.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkxix/kkxix.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kkxix/kkxix.github.io/issues"
+  },
+  "homepage": "https://github.com/kkxix/kkxix.github.io#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
