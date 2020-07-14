@@ -206,6 +206,7 @@
                             <br/><br />
                             <list>
                                 <li><a href="https://www.hubbardstreetdance.com/" target="_blank">Hubbard Street Dance Company</a> </li>
+                                <li><a href="https://www.ptamd.org/" target="_blank">Paul Taylor Dance Company</a></li>
                                 <li><a href="https://www.jameswiltondance.com/" >James Wilton Dance</a></li>
                             </list>
                             <br/>
@@ -954,38 +955,69 @@
                                         <div class="col-12">
                                             <div id="accordion" class="text-left">
                                                 <div class="card">
-                                                    <div class="card-header" id="sourceCode">
-                                                        <a href="#">
-                                                            <h3 class="mb-0">Source Code</h3>
-                                                        </a>
+                                                    <div class="card-header" id="finalProductHeading">
+                                                        <h3 class="mb-0">
+                                                            <button class="btn btn-link" data-toggle="collapse" data-target="#finalProduct"
+                                                                aria-controls="finalProduct">
+                                                                <h3>Final Product</h3>
+                                                            </button>
+                                                        </h3>
                                                     </div>
-                                                    <div class="card-header" id="finalProduct">
-                                                        <a href="#">
-                                                            <h3 class="mb-0">Final Product</h3>
-                                                        </a>
+                                                    <div id="finalProduct" class="collapse show" aria-labelledby="finalProductHeading" data-parent="#accordion">
+                                                        <div class="card-body">
+                                                            This project is ongoing, please check in later for deliverables!
+                                                        </div>
                                                     </div>
+
                                                     <div class="card-header" id="headingOne">
                                                         <h3 class="mb-0">
                                                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                                                 aria-expanded="true" aria-controls="collapseOne">
-                                                                <h3>Collapsible Group Item #1</h3>
+                                                                <h3>Description</h3>
                                                             </button>
                                                         </h3>
                                                     </div>
                                     
                                                     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                                            3 wolf
-                                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                            eiusmod.
-                                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                                            assumenda
-                                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                                            sapiente ea
-                                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                                                            denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                            After the 2020 census results are released, all states in the US will be redrawing district maps based on new population
+                                                            data. Our goal in with this research is to first make shape files of voting precincts more transparent and accessible. Many
+                                                            states in the US do not currently make precinct shape files publicly available, which are often the building blocks used
+                                                            by state legislatures to draw district maps. By making data public and accessible in more formats, we will help
+                                                            democratize the redistricting process. 
+                                                            <br /><br />
+                                                            We also aim to use voting and geographic data to create a basis for contesting 
+                                                            a given district map as gerrymandered. Many measurements of
+                                                            gerrymandering are flawed. Take for example the Pennsylvania Seventh District, aka "Goofy kicking Donald Duck". 
+                                                            <br /><br />
+                                                            <img class="img-fluid" src="assets/img/seventh.jpg"/>
+                                                            <br /><br />
+                                                            This disctrict seems gerrymandered because it is a very nonstandard, noncompact shape, which indicates to us that someone went out of
+                                                            their way to group certain areas together that are the opposition party, a technique called 
+                                                            <a href="https://www.policymap.com/2017/08/a-deeper-look-at-gerrymandering/" target="_blank">packing.</a> Thus one technique of measuring 
+                                                            gerrymandering, the <a href="https://en.wikipedia.org/wiki/Polsby%E2%80%93Popper_test" target="_blank">Polsby-Popper test</a> measures the
+                                                            compactness of a shape. Arizona used this test in its 2000 redistricting commission with the idea that low compactness makes
+                                                            a stronger case for gerrymandering. This test gels well with the "you-know-it-when-you-see-it" principle, but it can be misleading
+                                                            and hide nuance. For example, a complication arises when respecting natural features. Additionally, many of the most offensive 
+                                                            district shapes came from the time of hand-drawing, but computers have made it possible to ensure similar election results while 
+                                                            maintaining 'reasonable' looking shapes. Even if you accept that the Polsby-Popper test detects gerrymandering, there is the issue
+                                                            of the Voting Rights Act. This act and subsequent supreme court cases establish that district maps can't disadvantage voters 
+                                                            because of their race. Thus, there could be ambiguity about whether a district is built to 'pack' opposition voters, or whether it is
+                                                            designed to create an opportunity district for a minority racial population. 
+                                                            <br/><br/> 
+                                                            The Polsby-Popper test is but one example of measurements designed to define gerrymandering that face serious flaws. What I find to 
+                                                            be the common demoninator amongst these tests is that they try to tell the whole story by looking at one aspect of the data, and they
+                                                            often are based on either geographic or election data, but not both. I am very excited to be working on this research, because I 
+                                                            believe it avoids this trap and still provides a solid basis for claiming a map to gerrymandered using outlier analysis. We are 
+                                                            using a method developed by the 
+                                                            <a href="https://mggg.org/" target="_blank">Metric Geometry and Gerrymandering Group</a>. Using a Markov Chain Monte Carlo modeling, this 
+                                                            method creates a large random sampling of district maps. You can find a more detailed mathematical explanation 
+                                                            here. 
+                                                            This by simulating hypothetical elections based on recent election data on all the maps in this large sample, we can create a histogram 
+                                                            to show the liklihood of different election results. We can then compare the map drawn by the legislatures and see where they fall on 
+                                                            this histogram. If the election results of the legislature's map are an outlier, that builds a strong case that their map was designed to 
+                                                            specifically advantage one part. 
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -994,23 +1026,17 @@
                                                         <h3 class="mb-0">
                                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                                                                 aria-expanded="false" aria-controls="collapseTwo">
-                                                                <h3>Collapsible Group Item #2</h3>
+                                                                <h3>My Role</h3>
                                                             </button>
                                                         </h3>
                                                     </div>
                                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                                            3 wolf
-                                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                            eiusmod.
-                                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                                            assumenda
-                                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                                            sapiente ea
-                                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                                                            denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                            The project is ongoing, but so far, I have collected and refined election and demographic data for the
+                                                            state of Maine and helped to merge that with precinct shape files. I have undergone training on Metric Geometry and
+                                                            Gerrymandering Group’s (MGGG’s) software GerryChain, so that in the next week, I can generate millions of hypothetical
+                                                            maps for a given state and then run hypothetical elections in them based on recent election data. This will compile a
+                                                            basis for creating narratives about district maps being ‘fair’ or ‘unfair’.
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1019,23 +1045,17 @@
                                                         <!-- <h3 class="mb-0"> -->
                                                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree"
                                                             aria-expanded="false" aria-controls="collapseThree">
-                                                            <h3>Collapsible Group Item #3</h3>
+                                                            <h3>Coding Languages and Tools</h3>
                                                         </button>
                                                         <!-- </h3> -->
                                                     </div>
                                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                         <div class="card-body">
-                                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                                                            3 wolf
-                                                            moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                            eiusmod.
-                                                            Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                                            assumenda
-                                                            shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                                            sapiente ea
-                                                            proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw
-                                                            denim
-                                                            aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                            <list>
+                                                                <li>Python, GeoPandas library</li>
+                                                                <li><a href="https://gerrychain.readthedocs.io/en/latest/index.html" target="_blank">GerryChain</a></li>
+                                                                <li><a href="https://qgis.org/" target="_blank">QGIS</a></li>
+                                                            </list>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1247,7 +1267,7 @@
                                                             copied into the cell below.
                                                             
                                                             To further optimize the accuracy of tie-breaking, I could implement multiple tie-breaking algorithms and include a
-                                                            parameter in myNestedCrossVal() to optimize the tie-breaking method used similar to how k and the distance funciton are optimized.
+                                                            parameter in myNestedCrossVal() to optimize the tie-breaking method used similar to how k and the distance function are optimized.
 
                                                             <pre>
                                                               <code>
@@ -1298,9 +1318,9 @@ return mode
                                                         <br/><br />
                                                         The function gradient_descent() relies on functions gradient_batch() and loss(). The loss() function in turn relies on
                                                         the cost() function because to find the cost for one data sample in X. The loss() function then returns the average cost
-                                                        by summing all costs and dividing my the number of samples. The cost() function calculates cost using cross entropy,
+                                                        by summing all costs and dividing by the number of samples. The cost() function calculates cost using cross entropy,
                                                         which ensures convergence to a global minimum. It relies on h_log() to calculate the cost for a given data sample. The
-                                                        gradient_descent() function calcualtes new theta values based on old theta values, a learning rate, and a gradient
+                                                        gradient_descent() function calculates new theta values based on old theta values, a learning rate, and a gradient
                                                         determined in gradient_batch() until the loss (calculated by loss() ) of using the new theta values in a hypothesis
                                                         function is less than a given threshold.
                                                         <br /><br />
@@ -1308,7 +1328,7 @@ return mode
                                                         calculated by summing for all samples the differences between h_log() probability and real target values multiplied by
                                                         the sample's predictor value for feature j.
                                                         <br/><br />
-                                                        The hypothesis function h_log() only depends on inner(). The losgistic hypothesis function h_theta(x) can be thought of
+                                                        The hypothesis function h_log() only depends on inner(). The logistic hypothesis function h_theta(x) can be thought of
                                                         as g(theta.transpose * x), where g(x) is the sigmoid function. Thus in my implementation, g(x) corresponds to the
                                                         function h_log(), and the input to g(x) is calculated in the function inner(). Note: because of the data structures I
                                                         use in my implementation, inner() does not explicitly use the transpose of theta, but the return value is equivalent to
