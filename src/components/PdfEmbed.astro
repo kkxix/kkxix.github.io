@@ -1,0 +1,42 @@
+---
+// Desktop: inline PDF viewer. Narrow screens: pre-rendered page images.
+// Page images come from scripts/pdf-to-pages.sh -> public/pdfs/<slug>/page-NN.png
+const { slug, title, pages = 0 } = Astro.props;
+const pdf = `/pdfs/${slug}/${slug}.pdf`;
+const nums = Array.from({ length: pages }, (_, i) => String(i + 1).padStart(2, '0'));
+---
+<figure class="pdfembed">
+  <div class="pdfembed__bar">
+    <span>{title}</span>
+    <a href={pdf} rel="noopener">Open full PDF ↗</a>
+  </div>
+  <object class="pdfembed__object" data={pdf} type="application/pdf">
+    <p class="pdfembed__fallback">
+      Your browser cannot display PDFs inline. <a href={pdf}>Open the PDF</a>.
+    </p>
+  </object>
+  {pages > 0 && (
+    <div class="pdfembed__pages">
+      {nums.map((n) => (
+        <img src={`/pdfs/${slug}/page-${n}.png`} alt={`${title}, page ${Number(n)}`} loading="lazy" />
+      ))}
+    </div>
+  )}
+</figure>
+<style>
+  .pdfembed { margin: var(--s-6) 0; border: 1px solid var(--rule); background: var(--ground-raised); }
+  .pdfembed__bar {
+    display: flex; justify-content: space-between; gap: var(--s-4); align-items: center;
+    padding: var(--s-3) var(--s-4); border-bottom: 1px solid var(--rule);
+    font-family: var(--face-mono); font-size: var(--step--1); color: var(--ink-soft);
+  }
+  .pdfembed__object { width: 100%; height: min(85vh, 900px); display: block; }
+  .pdfembed__fallback { padding: var(--s-5); }
+  .pdfembed__pages { display: none; }
+  .pdfembed__pages img { width: 100%; border-bottom: 1px solid var(--rule); }
+  /* Narrow screens: inline PDF viewers are unreliable, so show page images. */
+  @media (max-width: 54rem) {
+    .pdfembed__object { display: none; }
+    .pdfembed__pages { display: block; }
+  }
+</style>

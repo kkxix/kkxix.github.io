@@ -1,0 +1,112 @@
+/* ---------------------------------------------------------------------------
+   Design tokens. Two home page directions share this file; each overrides only
+   what it needs. Light palette on bare :root, dark redefined in both the
+   system-preference and explicit-toggle blocks so either can win.
+   --------------------------------------------------------------------------- */
+:root {
+  /* Ink and ground — warm paper, not pure white */
+  --ground:        #f7f5f0;
+  --ground-sunk:   #efece4;
+  --ground-raised: #fffefb;
+  --ink:           #1c1a17;
+  --ink-soft:      #4a463f;
+  --ink-faint:     #7d776c;
+  --rule:          #d8d3c7;
+  --rule-strong:   #b5ae9e;
+
+  /* Cartographic accents: water, contour, survey red */
+  --water:         #2d5f7c;
+  --water-soft:    #7fa6bc;
+  --contour:       #9a6b3f;
+  --survey:        #b5432c;
+  --wash:          #e4ecef;
+
+  /* Type */
+  --face-text: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --face-ui:   ui-sans-serif, -apple-system, "Segoe UI", Inter, system-ui, sans-serif;
+  --face-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  --step--1: clamp(0.80rem, 0.77rem + 0.14vw, 0.88rem);
+  --step-0:  clamp(1.00rem, 0.96rem + 0.20vw, 1.10rem);
+  --step-1:  clamp(1.27rem, 1.18rem + 0.42vw, 1.51rem);
+  --step-2:  clamp(1.60rem, 1.43rem + 0.85vw, 2.07rem);
+  --step-3:  clamp(2.03rem, 1.71rem + 1.57vw, 2.84rem);
+  --step-4:  clamp(2.57rem, 2.02rem + 2.72vw, 3.90rem);
+
+  /* Space — a 4px base, named so layouts read consistently */
+  --s-1: 0.25rem; --s-2: 0.5rem;  --s-3: 0.75rem; --s-4: 1rem;
+  --s-5: 1.5rem;  --s-6: 2rem;    --s-7: 3rem;    --s-8: 4rem;  --s-9: 6rem;
+
+  --measure: 62ch;
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --max: 76rem;
+
+  --focus: var(--survey);
+}
+
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    --ground:        #14161a;
+    --ground-sunk:   #0e1013;
+    --ground-raised: #1c1f25;
+    --ink:           #eceae5;
+    --ink-soft:      #b8b3aa;
+    --ink-faint:     #857f75;
+    --rule:          #2c3138;
+    --rule-strong:   #454c56;
+    --water:         #7db4d4;
+    --water-soft:    #3d6b87;
+    --contour:       #c9925c;
+    --survey:        #e2694f;
+    --wash:          #1b2731;
+  }
+}
+
+:root[data-theme="dark"] {
+  --ground:        #14161a;
+  --ground-sunk:   #0e1013;
+  --ground-raised: #1c1f25;
+  --ink:           #eceae5;
+  --ink-soft:      #b8b3aa;
+  --ink-faint:     #857f75;
+  --rule:          #2c3138;
+  --rule-strong:   #454c56;
+  --water:         #7db4d4;
+  --water-soft:    #3d6b87;
+  --contour:       #c9925c;
+  --survey:        #e2694f;
+  --wash:          #1b2731;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { color-scheme: light dark; }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--face-text);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+.wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.skip {
+  position: absolute; left: -9999px;
+  background: var(--ink); color: var(--ground);
+  padding: var(--s-3) var(--s-4); z-index: 99;
+}
+.skip:focus { left: var(--s-4); top: var(--s-4); }

@@ -1,0 +1,21 @@
+---
+// Dev-only marker. Renders a visible box in `astro dev`, nothing in production.
+const { note } = Astro.props;
+const dev = import.meta.env.DEV;
+---
+{dev && (
+  <aside class="authortodo">
+    <b>AUTHOR</b>
+    <span>{note}</span>
+  </aside>
+)}
+<style>
+  .authortodo {
+    display: flex; gap: var(--s-3); align-items: baseline;
+    background: color-mix(in srgb, var(--contour) 16%, transparent);
+    border: 1.5px dashed var(--contour);
+    padding: var(--s-3) var(--s-4); margin-block: var(--s-4);
+    font-family: var(--face-mono); font-size: var(--step--1);
+  }
+  .authortodo b { letter-spacing: 0.12em; color: var(--contour); flex: none; }
+</style>

@@ -1,0 +1,53 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Plate from '../components/Plate.astro';
+
+const all = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const featured = all.filter((p) => p.data.featured);
+const rest = all.filter((p) => !p.data.featured);
+const roman = ['PL. I','PL. II','PL. III','PL. IV','PL. V','PL. VI','PL. VII','PL. VIII'];
+---
+<Base title="[NAME] — planning and spatial analysis">
+  <header class="banner">
+    <p class="banner__lede">
+      {/* AUTHOR: positioning statement — one or two lines, the first thing a reader
+          sees. Say what you do and the kind of problem you want to be hired for.
+          Do not restate your job title. */}
+      <span class="todo">Positioning statement needed</span>
+    </p>
+    <p class="banner__sub">
+      Selected work in planning analysis, spatial data science and applied research.
+    </p>
+  </header>
+
+  <h2 class="rule-head">Featured</h2>
+  <ol class="plate-grid">
+    {featured.map((p, i) => <Plate project={p} plate={roman[i]} />)}
+  </ol>
+
+  <h2 class="rule-head">Further work</h2>
+  <ol class="plate-grid plate-grid--small">
+    {rest.map((p, i) => <Plate project={p} plate={roman[featured.length + i]} />)}
+  </ol>
+</Base>
+
+<style>
+  .banner { max-width: 54ch; margin-bottom: var(--s-8); }
+  .banner__lede { font-size: var(--step-3); line-height: 1.15; margin: 0; text-wrap: balance; }
+  .banner__sub { color: var(--ink-soft); margin: var(--s-4) 0 0; }
+  .rule-head {
+    font-family: var(--face-mono); font-size: var(--step--1); font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-faint);
+    border-bottom: 1.5px solid var(--ink); padding-bottom: var(--s-2);
+    margin: var(--s-8) 0 var(--s-5);
+  }
+  .rule-head:first-of-type { margin-top: 0; }
+  .plate-grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: var(--s-5);
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  }
+  .plate-grid--small { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+</style>

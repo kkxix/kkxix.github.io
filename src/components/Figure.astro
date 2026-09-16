@@ -1,0 +1,18 @@
+---
+import { Image } from 'astro:assets';
+const { src, alt, caption, credit } = Astro.props;
+---
+<figure class="figure">
+  <Image src={src} alt={alt} widths={[600, 1200]} sizes="(max-width: 54rem) 100vw, 46rem" />
+  {(caption || credit) && (
+    <figcaption>
+      {caption}{credit && <span class="figure__credit"> {credit}</span>}
+    </figcaption>
+  )}
+</figure>
+<style>
+  .figure { margin: var(--s-6) 0; }
+  .figure :global(img) { width: 100%; border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: var(--step--1); color: var(--ink-soft); margin-top: var(--s-3); max-width: var(--measure); }
+  .figure__credit { color: var(--ink-faint); font-family: var(--face-mono); font-size: 0.72rem; }
+</style>

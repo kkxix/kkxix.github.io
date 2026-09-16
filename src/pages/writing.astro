@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+const items = (await getCollection('writing'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
+---
+<Base title="Writing — [NAME]">
+  <h1 class="page-title">Writing and talks</h1>
+  <p class="page-lede">
+    Published work on digital equity and broadband policy. These pieces are bylined
+    <b>Katie Knox Mimoune</b>; coursework and code elsewhere on this site appear
+    under Katie Knox.
+  </p>
+  <ul class="entries">
+    {items.map((it) => (
+      <li class="entry">
+        <p class="entry__meta">
+          <span class={`pill pill--${it.data.type}`}>{it.data.type}</span>
+          <span>{it.data.outlet}</span><span aria-hidden="true">·</span>
+          <time datetime={it.data.date.toISOString()}>{fmt(it.data.date)}</time>
+        </p>
+        <h2 class="entry__title">
+          <a href={it.data.url} rel="noopener">{it.data.title}</a>
+        </h2>
+        {it.data.takeaway && <p class="entry__take">{it.data.takeaway}</p>}
+        <p class="entry__byline">{it.data.byline}</p>
+      </li>
+    ))}
+  </ul>
+</Base>
+<style>
+  .page-title { font-size: var(--step-3); margin: 0 0 var(--s-4); letter-spacing: -0.01em; }
+  .page-lede { max-width: var(--measure); color: var(--ink-soft); margin: 0 0 var(--s-8); }
+  .entries { list-style: none; margin: 0; padding: 0; max-width: 60ch; }
+  .entry { border-top: 1px solid var(--rule); padding-block: var(--s-5); }
+  .entry__meta {
+    display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;
+    font-family: var(--face-mono); font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 var(--s-3);
+  }
+  .pill { border: 1px solid currentColor; padding: 1px var(--s-2); border-radius: 2px; }
+  .pill--article { color: var(--water); }
+  .pill--toolkit { color: var(--contour); }
+  .pill--talk    { color: var(--survey); }
+  .pill--report  { color: var(--ink-soft); }
+  .entry__title { font-size: var(--step-1); line-height: 1.25; margin: 0; }
+  .entry__title a { text-decoration: none; border-bottom: 1.5px solid var(--rule-strong); }
+  .entry__title a:hover { color: var(--water); border-color: var(--water); }
+  .entry__take { color: var(--ink-soft); margin: var(--s-3) 0 0; }
+  .entry__byline {
+    font-family: var(--face-mono); font-size: 0.72rem; color: var(--ink-faint);
+    margin: var(--s-3) 0 0;
+  }
+</style>

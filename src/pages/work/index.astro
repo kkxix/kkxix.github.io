@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Plate from '../../components/Plate.astro';
+
+const all = (await getCollection('projects'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const tags = [...new Set(all.flatMap((p) => p.data.tags))].sort();
+const themes = [...new Set(all.flatMap((p) => p.data.themes))].sort();
+const roman = ['PL. I','PL. II','PL. III','PL. IV','PL. V','PL. VI','PL. VII','PL. VIII'];
+---
+<Base title="Work — [NAME]">
+  <h1 class="page-title">All work</h1>
+
+  <nav class="filters" aria-label="Filter by tag">
+    <a class="chip is-on" href="/work" data-filter="all">All</a>
+    {tags.map((t) => <a class="chip" href={`/work/tag/${t}`} data-filter={t}>{t}</a>)}
+    {themes.map((t) => <a class="chip chip--theme" href={`/work/tag/${t}`} data-filter={t}>{t}</a>)}
+  </nav>
+
+  <ol class="plate-grid" id="grid">
+    {all.map((p, i) => (
+      <Plate project={p} plate={roman[i]} keys={[...p.data.tags, ...p.data.themes].join(' ')} />
+    ))}
+  </ol>
+</Base>
+
+<script>
+  const nav = document.querySelector('.filters');
+  const grid = document.getElementById('grid');
+  if (nav && grid) {
+    nav.addEventListener('click', (e) => {
+      const a = (e.target as HTMLElement).closest('a[data-filter]') as HTMLAnchorElement | null;
+      if (!a) return;
+      e.preventDefault();
+      const key = a.dataset.filter;
+      nav.querySelectorAll('a').forEach((n) => n.classList.toggle('is-on', n === a));
+      grid.querySelectorAll('li').forEach((li) => {
+        const keys = ((li as HTMLElement).dataset.keys ?? '').split(' ');
+        (li as HTMLElement).hidden = key !== 'all' && !keys.includes(key!);
+      });
+    });
+  }
+</script>
+
+<style>
+  .page-title { font-size: var(--step-3); margin: 0 0 var(--s-5); letter-spacing: -0.01em; }
+  .filters { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-6); }
+  .chip {
+    font-family: var(--face-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+    text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--rule-strong); padding: var(--s-1) var(--s-3);
+    border-radius: 2px; color: var(--ink-soft);
+  }
+  .chip--theme { color: var(--water); border-color: var(--water-soft); }
+  .chip:hover { border-color: var(--ink); color: var(--ink); }
+  .chip.is-on { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+  .plate-grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: var(--s-5);
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  }
+</style>

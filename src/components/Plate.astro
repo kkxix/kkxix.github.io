@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+const { project, plate, keys } = Astro.props;
+const d = project.data;
+---
+<li class="plate" data-keys={keys}>
+  <a class="plate__link" href={`/work/${project.id}`}>
+    <div class="plate__figure">
+      <Image src={d.cover} alt="" widths={[400, 800]} sizes="(max-width: 54rem) 100vw, 30rem" />
+      {d.stat && (
+        <span class="plate__stat"><b>{d.stat.value}</b><i>{d.stat.label}</i></span>
+      )}
+    </div>
+    <div class="plate__text">
+      <p class="plate__no">{plate} · {d.themes[0] ?? d.tags[0]}</p>
+      <h2 class="plate__title">{d.title}</h2>
+      <p class="plate__note">{d.summary}</p>
+      {d.collaborators?.length ? <p class="plate__with">with {d.collaborators.join(', ')}</p> : null}
+    </div>
+  </a>
+</li>
+<style>
+  .plate { border: 1px solid var(--rule); background: var(--ground-raised); }
+  .plate__link { display: grid; grid-template-rows: auto 1fr; text-decoration: none; height: 100%; }
+  .plate__figure {
+    position: relative; border-bottom: 1px solid var(--rule);
+    background: var(--wash); aspect-ratio: 16 / 10; overflow: hidden;
+  }
+  .plate__figure :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .plate__stat {
+    position: absolute; left: 0; bottom: 0;
+    display: flex; flex-direction: column; gap: 2px;
+    padding: var(--s-2) var(--s-4) var(--s-3);
+    background: color-mix(in srgb, var(--ground-raised) 90%, transparent);
+    border-top: 1px solid var(--rule); border-right: 1px solid var(--rule);
+  }
+  .plate__stat b { font-size: var(--step-2); line-height: 1; font-weight: 600; font-style: normal; }
+  .plate__stat i {
+    font-style: normal; font-family: var(--face-mono); font-size: 0.68rem;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-soft);
+  }
+  .plate__text { padding: var(--s-5); }
+  .plate__no {
+    font-family: var(--face-mono); font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-faint); margin: 0 0 var(--s-3);
+  }
+  .plate__title { font-size: var(--step-1); line-height: 1.22; margin: 0; }
+  .plate__link:hover .plate__title { color: var(--water); }
+  .plate__note { color: var(--ink-soft); font-size: var(--step--1); margin: var(--s-3) 0 0; }
+  .plate__with {
+    font-family: var(--face-mono); font-size: 0.7rem; color: var(--ink-faint);
+    margin: var(--s-3) 0 0;
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Plate from '../../../components/Plate.astro';
+
+export async function getStaticPaths() {
+  const all = await getCollection('projects');
+  const keys = [...new Set(all.flatMap((p) => [...p.data.tags, ...p.data.themes]))];
+  return keys.map((tag) => ({
+    params: { tag },
+    props: { items: all.filter((p) => [...p.data.tags, ...p.data.themes].includes(tag)) },
+  }));
+}
+const { tag } = Astro.params;
+const { items } = Astro.props;
+const roman = ['PL. I','PL. II','PL. III','PL. IV','PL. V','PL. VI','PL. VII','PL. VIII'];
+---
+<Base title={`${tag} — [NAME]`}>
+  <p class="crumb"><a href="/work">All work</a> / {tag}</p>
+  <h1 class="page-title">{tag}</h1>
+  <ol class="plate-grid">{items.map((p, i) => <Plate project={p} plate={roman[i]} />)}</ol>
+</Base>
+<style>
+  .crumb { font-family: var(--face-mono); font-size: var(--step--1); color: var(--ink-faint); margin: 0 0 var(--s-3); }
+  .crumb a { color: inherit; }
+  .page-title { font-size: var(--step-3); margin: 0 0 var(--s-6); letter-spacing: -0.01em; }
+  .plate-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-5); grid-template-columns: repeat(auto-fit, minmax(19rem,1fr)); }
+</style>

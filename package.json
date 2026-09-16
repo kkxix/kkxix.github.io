@@ -1,0 +1,22 @@
+{
+  "name": "kkxix-site",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "node scripts/check-content.mjs && astro build && node scripts/check-size.mjs",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "node scripts/check-content.mjs && node scripts/check-size.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.1",
+    "astro": "^7.3.2"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}
