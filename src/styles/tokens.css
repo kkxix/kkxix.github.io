@@ -28,8 +28,11 @@
   --highlight-ink: #12101c;  /* on chartreuse            16.07:1              */
 
   /* Type */
-  --face-text: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --face-ui:   ui-sans-serif, -apple-system, "Segoe UI", Inter, system-ui, sans-serif;
+  /* Helvetica where it exists, Arial on Windows and Liberation Sans on Linux —
+     both are metrically compatible with it, so no webfont is loaded and there is
+     no flash of unstyled text. The all-caps labels stay monospace. */
+  --face-text: "Helvetica Neue", Helvetica, Arial, "Liberation Sans", system-ui, sans-serif;
+  --face-ui:   var(--face-text);
   --face-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
   --step--1: clamp(0.80rem, 0.77rem + 0.14vw, 0.88rem);

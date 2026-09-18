@@ -130,6 +130,13 @@ highlighted boxes and legend swatches, with `--highlight-ink` on top of it
 (16.07:1). At 1.14:1 on white it is invisible as a text colour, so there is no
 `--highlight` text token at all — the name would invite the mistake.
 
+Type is Helvetica for headings and body, monospace for the all-caps labels. The
+stack resolves to real Helvetica Neue or Helvetica where installed, Arial on
+Windows and Liberation Sans on Linux — all metrically compatible — so no webfont
+is loaded and there is no flash of unstyled text. If identical rendering
+everywhere matters more than that, self-host Inter or Arimo and put it at the
+front of `--face-text`.
+
 Tokens are named by role — `--accent`, `--accent-soft`, `--highlight-bg`,
 `--highlight-ink`, `--warn`, `--plum` — rather than by colour, so the same
 component works in both themes. The light palette is defined on bare `:root`;
