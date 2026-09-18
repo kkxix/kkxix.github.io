@@ -26,11 +26,10 @@ const fmt = (x: Date) => x.toLocaleDateString('en-GB', { year: 'numeric', month:
     <dl class="case__meta">
       <div><dt>Date</dt><dd><time datetime={d.date.toISOString()}>{fmt(d.date)}</time></dd></div>
       <div><dt>Type</dt><dd>{d.kind}</dd></div>
-      <div><dt>Status</dt><dd>{d.status}</dd></div>
       {d.course && <div><dt>Course</dt><dd>{d.course}</dd></div>}
       <div>
         <dt>Role</dt>
-        <dd>{d.role ?? <span class="todo">role not yet stated</span>}</dd>
+        <dd>{d.role}</dd>
       </div>
       {d.collaborators?.length ? (
         <div><dt>With</dt><dd>{d.collaborators.join(', ')}</dd></div>
