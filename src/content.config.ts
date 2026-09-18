@@ -26,6 +26,8 @@ const projects = defineCollection({
       title: z.string(),
       note: z.string().optional(),
     })).optional(),
+    // Page-image count for PdfEmbed's narrow-screen fallback
+    pdfPages: z.number().int().positive().optional(),
     links: z.object({
       code: z.string().url().optional(),
       report: z.string().optional(),

@@ -26,6 +26,13 @@
 - [ ] Resume cites the RNA poster as CCSCNE 2022; the PDF is a CS87 course report.
       Site says both. Confirm the poster date
 
+## Blocked on OneDrive
+- [ ] Bustleton plan book PDF cannot be embedded yet: the source file went dataless
+      again and OneDrive stopped materialising files mid-session. Once it is back,
+      run `./scripts/pdf-to-pages.sh "<path>/Bustleton_Book.pdf" bustling-bustleton`
+      and add `links: { pdf: ... }` plus `pdfPages: 105` to the project entry.
+      Note the source is 56 MB; check the compressed size against the 20 MB rule.
+
 ## Decisions
 - [ ] Which repositories become public, and when (all six are private and carry open AUTHOR markers)
 - [ ] Co-author consent: home value + eviction (Abraham, Levin), Nairobi (Xu, Ezra),

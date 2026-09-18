@@ -46,7 +46,7 @@ const fmt = (x: Date) => x.toLocaleDateString('en-GB', { year: 'numeric', month:
 
     {d.links.report && <ReportFrame src={d.links.report} title={`${d.title} — full analysis`} />}
     {d.notebooks?.length ? <NotebookSet slug={project.id} notebooks={d.notebooks} /> : null}
-    {d.links.pdf && <PdfEmbed slug={project.id} title={d.title} />}
+    {d.links.pdf && <PdfEmbed slug={project.id} title={d.title} pages={d.pdfPages ?? 0} />}
 
     {(d.links.code || d.links.live || d.links.slides) && (
       <p class="case__links">
