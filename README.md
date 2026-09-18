@@ -125,8 +125,14 @@ orange is darkened to #d0570f where it needs to be legible on light. On the dark
 ground the order inverts: chartreuse (16.07:1), plum (9.72:1) and orange (6.35:1)
 all pass, while indigo is too dark and is used as a ground instead.
 
-Tokens are named by role — `--accent`, `--accent-soft`, `--highlight`, `--warn` —
-rather than by colour, so the same component works in both themes. The light palette is defined on bare `:root`;
+**Chartreuse is never text.** It exists only as `--highlight-bg`, a background for
+highlighted boxes and legend swatches, with `--highlight-ink` on top of it
+(16.07:1). At 1.14:1 on white it is invisible as a text colour, so there is no
+`--highlight` text token at all — the name would invite the mistake.
+
+Tokens are named by role — `--accent`, `--accent-soft`, `--highlight-bg`,
+`--highlight-ink`, `--warn`, `--plum` — rather than by colour, so the same
+component works in both themes. The light palette is defined on bare `:root`;
 dark is redefined both under `prefers-color-scheme` and under `[data-theme="dark"]`,
 so a future toggle wins in either direction. Layout is responsive to 360 px, focus
 states are visible, and reduced motion is respected.

@@ -16,13 +16,16 @@
 
   /* Accents. Contrast on --ground is noted; see the palette note below.
      --accent is the only palette colour that passes AA for body text on white. */
-  --accent:        #6637ec;  /* electric indigo   6.17:1  body text ok      */
-  --accent-soft:   #8455fe;  /* medium slate blue 4.35:1  large text / UI    */
-  --highlight:     #ceff1b;  /* chartreuse        1.14:1  fills only        */
-  --plum:          #e8a6d6;  /* plum              1.89:1  fills only        */
-  --warn:          #d0570f;  /* blaze orange, darkened for light ground     */
-  --warn-pure:     #fc6715;  /* the palette orange, for fills               */
+  --accent:        #6637ec;  /* electric indigo    6.17:1  text ok            */
+  --accent-soft:   #8455fe;  /* medium slate blue  4.35:1  large text / UI    */
+  --warn:          #b8480a;  /* blaze orange, darkened     5.16:1  text ok    */
+  --plum:          #e8a6d6;  /* fills only                 1.89:1             */
   --wash:          #f0ecfd;
+
+  /* Chartreuse is a BACKGROUND, never a text colour: 1.14:1 on white. Use it to
+     highlight a box, and put --highlight-ink on top of it. */
+  --highlight-bg:  #ceff1b;
+  --highlight-ink: #12101c;  /* on chartreuse            16.07:1              */
 
   /* Type */
   --face-text: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -57,13 +60,13 @@
     --ink-faint:     #8b86a3;
     --rule:          #2a2540;
     --rule-strong:   #443c66;
-    --accent:        #ceff1b;  /* chartreuse    16.07:1 */
-    --accent-soft:   #a88bff;  /* slate blue lightened 6.99:1 */
-    --highlight:     #e8a6d6;  /* plum           9.72:1 */
-    --plum:          #e8a6d6;
-    --warn:          #fc6715;  /* blaze orange   6.35:1 */
-    --warn-pure:     #fc6715;
+    --accent:        #a88bff;  /* slate blue lightened  6.99:1  text ok */
+    --accent-soft:   #c4aaff;  /*                       9.44:1         */
+    --warn:          #fc6715;  /* blaze orange          6.35:1  text ok */
+    --plum:          #e8a6d6;  /*                       9.72:1         */
     --wash:          #1d1733;
+    --highlight-bg:  #ceff1b;  /* background only, never text          */
+    --highlight-ink: #12101c;
   }
 }
 
@@ -76,13 +79,13 @@
   --ink-faint:   #8b86a3;
   --rule:      #2a2540;
   --rule-strong:   #443c66;
-  --accent:    #ceff1b;  /* chartreuse  16.07:1 */
-  --accent-soft:   #a88bff;  /* slate blue lightened 6.99:1 */
-  --highlight:   #e8a6d6;  /* plum       9.72:1 */
-  --plum:      #e8a6d6;
-  --warn:      #fc6715;  /* blaze orange   6.35:1 */
-  --warn-pure:   #fc6715;
-  --wash:      #1d1733;
+  --accent:        #a88bff;
+  --accent-soft:   #c4aaff;
+  --warn:          #fc6715;
+  --plum:          #e8a6d6;
+  --wash:          #1d1733;
+  --highlight-bg:  #ceff1b;
+  --highlight-ink: #12101c;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
