@@ -32,7 +32,6 @@ const { title, section = null } = Astro.props;
       <nav class="legend__nav" aria-label="Sections">
         <a href="/work" data-section="work"><span class="key key--chartreuse"></span>Work</a>
         <a href="/writing" data-section="writing"><span class="key key--section"></span>Writing</a>
-        <a href="/about" data-section="about"><span class="key key--section"></span>About</a>
         <a href="/cv" data-section="cv"><span class="key key--section"></span>CV</a>
       </nav>
       <dl class="legend__meta">
@@ -60,9 +59,9 @@ const { title, section = null } = Astro.props;
   .legend__portrait {
     width: 100%; height: auto; display: block;
     margin-top: var(--s-4); border-radius: var(--s-2);
-    /* The source is a full-length portrait; crop square onto the head and
-       shoulders so the face is legible at sidebar size. */
-    aspect-ratio: 1 / 1; object-fit: cover; object-position: 56% 9%;
+    /* Tall crop so the hands are in frame, pushed right to trim the empty wall
+       on the left of the source. */
+    aspect-ratio: 5 / 8; object-fit: cover; object-position: 78% 20%;
   }
   .legend__nav { display: flex; flex-direction: column; gap: var(--s-3); }
   .legend__nav a {

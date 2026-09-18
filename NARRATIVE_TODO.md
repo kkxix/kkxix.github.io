@@ -4,10 +4,13 @@
 All seven projects now carry a role, confirmed by the owner. Home value was taken
 from the commit history at the owner's direction; the rest were stated directly.
 
+## Note
+The About page was removed from main; it is preserved on the `with-about-page`
+branch. Its background and names sections are not duplicated anywhere, so the CV
+and the home page bio now have to carry that ground.
+
 ## Blocking the site going live
-- [ ] src/pages/index.astro:§banner — positioning statement, the first thing a reader sees
-- [ ] src/pages/about.astro:§bio — two or three paragraphs
-- [ ] src/pages/about.astro:§contact and src/pages/cv.astro — which contact details the site carries. The source CV lists a personal Gmail address; the site currently carries none
+- [ ] src/pages/index.astro:§banner — short bio. This is the landing page and there is no About page, so this and the CV carry the whole introduction
 
 ## Per project
 - [ ] Nairobi notebooks 0302 and 0303 were run on Colab and saved with no outputs.
