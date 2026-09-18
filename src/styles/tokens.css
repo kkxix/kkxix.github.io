@@ -5,14 +5,14 @@
    --------------------------------------------------------------------------- */
 :root {
   /* Ground and ink — neutrals derived from the indigo hue so they stay in family */
-  --ground:        #fcfcfe;
-  --ground-sunk:   #f4f2fb;
+  --ground:        #ffffff;
+  --ground-sunk:   #f5f5f6;
   --ground-raised: #ffffff;
-  --ink:           #17132a;
-  --ink-soft:      #4a4272;
-  --ink-faint:     #6d6690;
-  --rule:          #e2dff0;
-  --rule-strong:   #bdb6d8;
+  --ink:           #16161a;
+  --ink-soft:      #4d4d55;
+  --ink-faint:     #74747f;
+  --rule:          #e4e4e7;
+  --rule-strong:   #c2c2c9;
 
   /* Accents. Contrast on --ground is noted; see the palette note below.
      --accent is the only palette colour that passes AA for body text on white. */
@@ -20,12 +20,12 @@
   --accent-soft:   #8455fe;  /* medium slate blue  4.35:1  large text / UI    */
   --warn:          #b8480a;  /* blaze orange, darkened     5.16:1  text ok    */
   --plum:          #e8a6d6;  /* fills only                 1.89:1             */
-  --wash:          #f0ecfd;
+  --wash:          #f5f5f6;
 
   /* Chartreuse is a BACKGROUND, never a text colour: 1.14:1 on white. Use it to
      highlight a box, and put --highlight-ink on top of it. */
   --highlight-bg:  #ceff1b;
-  --highlight-ink: #12101c;  /* on chartreuse            16.07:1              */
+  --highlight-ink: #111114;  /* on chartreuse            16.07:1              */
 
   /* Type */
   /* Helvetica where it exists, Arial on Windows and Liberation Sans on Linux —
@@ -55,40 +55,40 @@
 
 :root:not([data-theme="light"]) {
   @media (prefers-color-scheme: dark) {
-    --ground:        #12101c;
-    --ground-sunk:   #0c0a14;
-    --ground-raised: #1a1728;
-    --ink:           #f2f1f8;
-    --ink-soft:      #c3bfd6;
-    --ink-faint:     #8b86a3;
-    --rule:          #2a2540;
-    --rule-strong:   #443c66;
+    --ground:        #111114;
+    --ground-sunk:   #0b0b0e;
+    --ground-raised: #18181c;
+    --ink:           #f4f4f6;
+    --ink-soft:      #c2c2c9;
+    --ink-faint:     #8a8a94;
+    --rule:          #2a2a31;
+    --rule-strong:   #45454f;
     --accent:        #a88bff;  /* slate blue lightened  6.99:1  text ok */
     --accent-soft:   #c4aaff;  /*                       9.44:1         */
     --warn:          #fc6715;  /* blaze orange          6.35:1  text ok */
     --plum:          #e8a6d6;  /*                       9.72:1         */
-    --wash:          #1d1733;
+    --wash:          #18181c;
     --highlight-bg:  #ceff1b;  /* background only, never text          */
-    --highlight-ink: #12101c;
+    --highlight-ink: #111114;
   }
 }
 
 :root[data-theme="dark"] {
-  --ground:    #12101c;
-  --ground-sunk:   #0c0a14;
-  --ground-raised: #1a1728;
-  --ink:       #f2f1f8;
-  --ink-soft:    #c3bfd6;
-  --ink-faint:   #8b86a3;
-  --rule:      #2a2540;
-  --rule-strong:   #443c66;
+  --ground:        #111114;
+  --ground-sunk:   #0b0b0e;
+  --ground-raised: #18181c;
+  --ink:           #f4f4f6;
+  --ink-soft:      #c2c2c9;
+  --ink-faint:     #8a8a94;
+  --rule:          #2a2a31;
+  --rule-strong:   #45454f;
   --accent:        #a88bff;
   --accent-soft:   #c4aaff;
   --warn:          #fc6715;
   --plum:          #e8a6d6;
-  --wash:          #1d1733;
+  --wash:          #18181c;
   --highlight-bg:  #ceff1b;
-  --highlight-ink: #12101c;
+  --highlight-ink: #111114;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -123,3 +123,28 @@ a { color: inherit; }
   padding: var(--s-3) var(--s-4); z-index: 99;
 }
 .skip:focus { left: var(--s-4); top: var(--s-4); }
+
+/* ---------------------------------------------------------------------------
+   Section accents. Each part of the site has one colour, used for its legend
+   swatch and for the accents on its own pages, so the key and the page agree.
+   Both values pass AA for text on their own ground.
+   --------------------------------------------------------------------------- */
+[data-section="work"]    { --accent: #6637ec; --accent-soft: #8455fe; }
+[data-section="writing"] { --accent: #b8480a; --accent-soft: #fc6715; }
+[data-section="about"]   { --accent: #a8358c; --accent-soft: #e8a6d6; }
+[data-section="cv"]      { --accent: #5a35c9; --accent-soft: #8455fe; }
+
+:root:not([data-theme="light"]) {
+  @media (prefers-color-scheme: dark) {
+    [data-section="work"]    { --accent: #a88bff; --accent-soft: #c4aaff; }
+    [data-section="writing"] { --accent: #fc6715; --accent-soft: #fc6715; }
+    [data-section="about"]   { --accent: #e8a6d6; --accent-soft: #e8a6d6; }
+    [data-section="cv"]      { --accent: #c4aaff; --accent-soft: #a88bff; }
+  }
+}
+:root[data-theme="dark"] {
+  [data-section="work"]    { --accent: #a88bff; --accent-soft: #c4aaff; }
+  [data-section="writing"] { --accent: #fc6715; --accent-soft: #fc6715; }
+  [data-section="about"]   { --accent: #e8a6d6; --accent-soft: #e8a6d6; }
+  [data-section="cv"]      { --accent: #c4aaff; --accent-soft: #a88bff; }
+}

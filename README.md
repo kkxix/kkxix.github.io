@@ -125,6 +125,12 @@ orange is darkened to #d0570f where it needs to be legible on light. On the dark
 ground the order inverts: chartreuse (16.07:1), plum (9.72:1) and orange (6.35:1)
 all pass, while indigo is too dark and is used as a ground instead.
 
+**Each section has its own accent.** `Base.astro` takes a `section` prop, which
+sets `data-section` on the body; `src/styles/tokens.css` then swaps `--accent` for
+that section. The legend swatches carry their own section's colour, so the key and
+the page always agree. All eight values (four sections, two themes) pass AA for
+text on their own ground — work indigo, writing orange, about magenta, CV violet.
+
 **Chartreuse is never text.** It exists only as `--highlight-bg`, a background for
 highlighted boxes and legend swatches, with `--highlight-ink` on top of it
 (16.07:1). At 1.14:1 on white it is invisible as a text colour, so there is no

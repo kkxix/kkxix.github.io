@@ -1,7 +1,7 @@
 ---
 import '../styles/tokens.css';
-interface Props { title: string; }
-const { title } = Astro.props;
+interface Props { title: string; section?: 'work' | 'writing' | 'about' | 'cv' | null }
+const { title, section = null } = Astro.props;
 ---
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@ const { title } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
 </head>
-<body>
+<body data-section={section}>
   <a class="skip" href="#main">Skip to content</a>
   <div class="shell">
     <aside class="legend" aria-label="Site navigation">
@@ -18,10 +18,10 @@ const { title } = Astro.props;
         <a class="legend__name" href="/">Katie Knox</a>
       </div>
       <nav class="legend__nav" aria-label="Sections">
-        <a href="/work"><span class="key key--accent"></span>Work</a>
-        <a href="/writing"><span class="key key--chartreuse"></span>Writing</a>
-        <a href="/about"><span class="key key--warn"></span>About</a>
-        <a href="/cv"><span class="key key--plum"></span>CV</a>
+        <a href="/work" data-section="work"><span class="key key--section"></span>Work</a>
+        <a href="/writing" data-section="writing"><span class="key key--section"></span>Writing</a>
+        <a href="/about" data-section="about"><span class="key key--section"></span>About</a>
+        <a href="/cv" data-section="cv"><span class="key key--section"></span>CV</a>
       </nav>
       <dl class="legend__meta">
         <div><dt>Discipline</dt><dd>Planning &amp; spatial analysis</dd></div>
@@ -51,12 +51,10 @@ const { title } = Astro.props;
     font-family: var(--face-ui); text-decoration: none; padding: var(--s-2) 0;
   }
   .legend__nav a:hover { color: var(--accent); }
-  .key { width: 1.15rem; height: 0.7rem; border: 1px solid var(--ink-faint); flex: none; }
-  .key--accent { background: var(--accent); }
-  .key--warn { background: var(--warn); }
-  /* A swatch is a background, which is the one place chartreuse belongs. */
-  .key--chartreuse { background: var(--highlight-bg); }
-  .key--plum { background: var(--plum); }
+  .key { width: 1.1rem; height: 0.7rem; border-radius: 999px; flex: none; }
+  /* Each swatch takes its own section's accent, so the key matches the colour
+     that page actually uses. */
+  .key--section { background: var(--accent); }
   .legend__meta { margin: auto 0 0; display: grid; gap: var(--s-4); }
   .legend__meta dt {
     font-family: var(--face-mono); font-size: 0.72rem; text-transform: uppercase;
@@ -68,7 +66,8 @@ const { title } = Astro.props;
     background: var(--highlight-bg);
     color: var(--highlight-ink);
     box-decoration-break: clone;
-    padding: 0 0.25rem;
+    padding: 0.15em 0.6em;
+    border-radius: 999px;
     font-family: var(--face-mono); font-size: var(--step-0);
   }
   @media print {
