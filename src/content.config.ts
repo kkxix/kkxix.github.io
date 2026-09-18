@@ -58,6 +58,9 @@ const writing = defineCollection({
     peerReviewed: z.boolean().default(false),
     takeaway: z.string().optional(),
     venueNote: z.string().optional(),
+    // For writing about policy that has since changed — shown so a dated piece
+    // reads as a record of its moment rather than a current claim.
+    statusNote: z.string().optional(),
   }).refine((d) => d.url || d.pdf, { message: 'writing entries need a url or a pdf' }),
 });
 
