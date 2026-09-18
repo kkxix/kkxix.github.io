@@ -17,6 +17,9 @@
 - [ ] indego-demand-forecast — summary drawing on the critical reflection
 
 ## Publications
+- [ ] The NDNC report carries no individual bylines — it is institutionally authored
+      by NDIA. The site states the role as "Data analysis and contributing author"
+      from the owner's own account. Confirm that wording is one NDIA would recognise
 - [ ] The RNA paper is hosted here as a PDF; it has no other public home. Confirm the
       three co-authors (Tillie Ferguson, Alice Huang, Sojin Lim) are content for the
       course report to be published on a personal site
