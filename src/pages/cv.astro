@@ -1,10 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import AuthorTodo from '../components/AuthorTodo.astro';
 
 const education = [
   { title: 'Master of City Planning + Master of Urban Spatial Analytics', org: 'University of Pennsylvania', dates: '2025 – 2027',
-    note: 'Dual degree, in progress. Smart City concentration, focused on urban spatial analysis.' },
+    note: 'Dual degree, in progress. STIP concentration (Sustainable Transportation and Infrastructure Planning), focused on urban spatial analysis.' },
   { title: 'Bachelor of Arts', org: 'Swarthmore College', dates: '2017 – 2022',
     note: 'Sigma Xi, The Scientific Research Honor Society.' },
 ];
@@ -68,12 +67,11 @@ const papers = [
     <header class="cv__head">
       <h1 class="cv__name">Katie Knox</h1>
       <p class="cv__sub">Urban planning and spatial analysis · Philadelphia</p>
-      <p class="cv__actions no-print">
-        <a href="/cv/katie-knox-cv.pdf">Download PDF ↓</a>
+      <p class="cv__actions">
+        <a href="https://www.linkedin.com/in/katherine-knox-834191156/" rel="noopener">LinkedIn ↗</a>
+        <a class="no-print" href="/cv/katie-knox-cv.pdf">Download PDF ↓</a>
       </p>
     </header>
-
-    <AuthorTodo note="Contact details are deliberately omitted. The source CV lists a personal Gmail address; decide what this page should carry before the site goes public." />
 
     <section class="cv__sec">
       <h2>Education</h2>
@@ -132,7 +130,10 @@ const papers = [
   .cv__head { border-bottom: 1.5px solid var(--ink); padding-bottom: var(--s-4); margin-bottom: var(--s-6); }
   .cv__name { font-size: var(--step-3); margin: 0; letter-spacing: -0.01em; }
   .cv__sub { color: var(--ink-soft); margin: var(--s-2) 0 0; }
-  .cv__actions { margin: var(--s-4) 0 0; font-family: var(--face-mono); font-size: var(--step--1); }
+  .cv__actions {
+    margin: var(--s-4) 0 0; display: flex; gap: var(--s-5); flex-wrap: wrap;
+    font-family: var(--face-mono); font-size: var(--step--1);
+  }
   .cv__actions a { border-bottom: 1.5px solid var(--rule-strong); text-decoration: none; }
   .cv__actions a:hover { color: var(--accent); border-color: var(--accent); }
   .cv__sec { margin-bottom: var(--s-7); }

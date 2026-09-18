@@ -34,6 +34,9 @@ const { title, section = null } = Astro.props;
         <a href="/writing" data-section="writing"><span class="key key--section"></span>Writing</a>
         <a href="/cv" data-section="cv"><span class="key key--section"></span>CV</a>
       </nav>
+      <p class="legend__contact">
+        <a href="https://www.linkedin.com/in/katherine-knox-834191156/" rel="noopener">LinkedIn ↗</a>
+      </p>
       <dl class="legend__meta">
         <div><dt>Discipline</dt><dd>Planning &amp; spatial analysis</dd></div>
         <div><dt>Based</dt><dd>Philadelphia</dd></div>
@@ -74,7 +77,15 @@ const { title, section = null } = Astro.props;
      that page actually uses. */
   .key--section { background: var(--accent); }
   .key--chartreuse { background: var(--highlight-bg); }
-  .legend__meta { margin: auto 0 0; display: grid; gap: var(--s-4); }
+  .legend__contact {
+    margin: auto 0 0; font-family: var(--face-mono); font-size: var(--step--1);
+  }
+  .legend__contact a {
+    color: var(--ink-soft); text-decoration: none;
+    border-bottom: 1.5px solid var(--rule-strong);
+  }
+  .legend__contact a:hover { color: var(--accent); border-color: var(--accent); }
+  .legend__meta { margin: var(--s-5) 0 0; display: grid; gap: var(--s-4); }
   .legend__meta dt {
     font-family: var(--face-mono); font-size: 0.72rem; text-transform: uppercase;
     letter-spacing: 0.12em; color: var(--ink-faint);

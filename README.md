@@ -13,6 +13,15 @@ npm run preview  # serve the built site
 npm run check    # run the guards alone
 ```
 
+**If a style change does not appear in `astro dev`, it is the dev server, not your
+CSS.** The daemon will serve freshly built HTML alongside stale component CSS, so
+an element renders with its markup but none of its styling. `npx astro dev stop`
+is not always enough — kill the port and clear the caches:
+
+```bash
+npx astro dev stop; lsof -ti:4321 | xargs kill -9; rm -rf .astro node_modules/.vite
+```
+
 **Astro 7 runs `astro dev` as a daemon.** `Ctrl-C` or `pkill` does not reliably stop
 it, and a stale server will keep serving old content — including silently ignoring a
 new content collection. Use `npx astro dev stop` before restarting, or you will chase
