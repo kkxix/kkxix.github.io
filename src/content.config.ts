@@ -26,8 +26,11 @@ const projects = defineCollection({
       title: z.string(),
       note: z.string().optional(),
     })).optional(),
-    // Page-image count for PdfEmbed's narrow-screen fallback
+    // Page-image count for PdfEmbed / PdfSpread
     pdfPages: z.number().int().positive().optional(),
+    // 'spread' shows facing pages side by side (for landscape documents);
+    // 'viewer' embeds the inline PDF viewer instead.
+    pdfDisplay: z.enum(['viewer','spread']).default('viewer'),
     links: z.object({
       code: z.string().url().optional(),
       report: z.string().optional(),

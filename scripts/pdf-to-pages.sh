@@ -28,7 +28,23 @@ else
   cp "$PDF" "$OUT/$SLUG.pdf"
 fi
 
+# PNG page images are large for photo-heavy documents (a 105-page plan book came
+# to 47 MB); WebP takes the same pages to under 10 MB at visually identical quality.
+if command -v cwebp >/dev/null 2>&1; then
+  echo "Converting page images to WebP…"
+  for png in "$OUT"/page-*.png; do
+    [ -e "$png" ] || continue
+    cwebp -quiet -q 82 "$png" -o "${png%.png}.webp" && rm -f "$png"
+  done
+  EXT=webp
+else
+  echo "cwebp not found — keeping PNG page images (much larger)" >&2
+  EXT=png
+fi
+
 SIZE=$(du -m "$OUT/$SLUG.pdf" | cut -f1)
-echo "Wrote $(ls "$OUT"/page-*.png 2>/dev/null | wc -l | tr -d ' ') page images; PDF is ${SIZE} MB"
+PAGES=$(ls "$OUT"/page-*."$EXT" 2>/dev/null | wc -l | tr -d ' ')
+echo "Wrote $PAGES page images (.$EXT); PDF is ${SIZE} MB"
+echo "Set pdfPages: $PAGES in the project frontmatter."
 [ "$SIZE" -gt 20 ] && echo "WARNING: PDF is over 20 MB — see the brief's file-size rules." >&2
 exit 0

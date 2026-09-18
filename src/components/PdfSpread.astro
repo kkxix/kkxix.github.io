@@ -1,0 +1,81 @@
+---
+// Displays a landscape PDF as facing-page spreads, using the page images from
+// scripts/pdf-to-pages.sh. The cover sits alone; every pair after it is shown
+// side by side, so a document laid out with outer side-rails reads the way it
+// was designed to. Collapses to one page per row on narrow screens.
+const {
+  slug,
+  title,
+  pages,
+  ext = 'webp',
+  coverAlone = true,
+  pad = 3,
+} = Astro.props;
+
+const n = (i: number) => String(i).padStart(pad, '0');
+const src = (i: number) => `/pdfs/${slug}/page-${n(i)}.${ext}`;
+
+const first = coverAlone ? 2 : 1;
+const spreads: number[][] = [];
+for (let i = first; i <= pages; i += 2) {
+  spreads.push(i + 1 <= pages ? [i, i + 1] : [i]);
+}
+---
+<section class="spread">
+  <div class="spread__bar">
+    <span>{title} — {pages} pages</span>
+    <a href={`/pdfs/${slug}/${slug}.pdf`} rel="noopener">Download PDF ↗</a>
+  </div>
+
+  {coverAlone && (
+    <div class="spread__cover">
+      <img src={src(1)} alt={`${title}, cover`} width="1210" height="935" loading="eager" />
+    </div>
+  )}
+
+  <ol class="spread__list">
+    {spreads.map((pair) => (
+      <li class={`spread__row ${pair.length === 1 ? 'is-single' : ''}`}>
+        {pair.map((p) => (
+          <figure class="spread__page">
+            <img src={src(p)} alt={`${title}, page ${p}`} width="1210" height="935" loading="lazy" />
+            <figcaption>{p}</figcaption>
+          </figure>
+        ))}
+      </li>
+    ))}
+  </ol>
+</section>
+<style>
+  .spread { margin: var(--s-7) 0; }
+  .spread__bar {
+    display: flex; justify-content: space-between; gap: var(--s-4); align-items: center;
+    font-family: var(--face-mono); font-size: var(--step--1); color: var(--ink-soft);
+    border-bottom: 1.5px solid var(--ink); padding-bottom: var(--s-2); margin-bottom: var(--s-5);
+  }
+  .spread__cover { margin-bottom: var(--s-5); }
+  .spread__cover img {
+    width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff;
+  }
+  .spread__list { list-style: none; margin: 0; padding: 0; }
+  .spread__row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    margin-bottom: var(--s-5); background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+  .spread__row.is-single { grid-template-columns: 1fr; }
+  .spread__page { margin: 0; position: relative; background: #fff; }
+  .spread__page img { width: 100%; height: auto; display: block; }
+  .spread__page figcaption {
+    position: absolute; right: var(--s-2); bottom: var(--s-2);
+    font-family: var(--face-mono); font-size: 0.65rem; color: var(--ink-faint);
+    background: color-mix(in srgb, var(--ground-raised) 85%, transparent);
+    padding: 0 var(--s-2); border-radius: 2px;
+  }
+  /* One page per row when there is not enough width for a true spread. */
+  @media (max-width: 60rem) {
+    .spread__row { grid-template-columns: 1fr; gap: var(--s-3); border: 0; background: none; }
+    .spread__page { border: 1px solid var(--rule); }
+  }
+</style>

@@ -81,9 +81,26 @@ though GitHub Pages does. A bare directory path works in production and 404s loc
 ./scripts/pdf-to-pages.sh path/to/file.pdf <slug> [first] [last]
 ```
 
-Writes page images and a compressed PDF to `public/pdfs/<slug>/`. `PdfEmbed` shows the
-inline viewer on desktop and the page images on narrow screens. Ghostscript is
-optional; without it the PDF is copied uncompressed. The script warns above 20 MB.
+Writes page images and a ghostscript `/ebook` copy to `public/pdfs/<slug>/`, then
+converts the page images to WebP if `cwebp` is available. That conversion matters:
+the 105-page Bustleton plan book came to **47 MB as PNG and 9.6 MB as WebP**, at
+visually identical quality. The script prints the page count to put in `pdfPages`,
+and warns if the PDF is still over 20 MB.
+
+Two display modes, set with `pdfDisplay` in the project frontmatter:
+
+- `viewer` (default) — `PdfEmbed`, an inline PDF viewer on desktop with the page
+  images as the narrow-screen fallback. Good for portrait documents.
+- `spread` — `PdfSpread`, facing pages side by side from the page images, cover
+  alone. Use for landscape documents laid out as spreads: the Bustleton plan book
+  has diagrams that run across a two-page spread and are cut in half if shown one
+  page at a time. Collapses to one page per row below 60rem.
+
+```yaml
+links: { pdf: "/pdfs/<slug>/<slug>.pdf" }
+pdfPages: 105
+pdfDisplay: spread
+```
 
 ## Design
 

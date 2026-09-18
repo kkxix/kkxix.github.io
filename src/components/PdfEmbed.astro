@@ -1,9 +1,9 @@
 ---
 // Desktop: inline PDF viewer. Narrow screens: pre-rendered page images.
 // Page images come from scripts/pdf-to-pages.sh -> public/pdfs/<slug>/page-NN.png
-const { slug, title, pages = 0 } = Astro.props;
+const { slug, title, pages = 0, ext = 'webp', pad = 2 } = Astro.props;
 const pdf = `/pdfs/${slug}/${slug}.pdf`;
-const nums = Array.from({ length: pages }, (_, i) => String(i + 1).padStart(2, '0'));
+const nums = Array.from({ length: pages }, (_, i) => String(i + 1).padStart(pad, '0'));
 ---
 <figure class="pdfembed">
   <div class="pdfembed__bar">
@@ -18,7 +18,7 @@ const nums = Array.from({ length: pages }, (_, i) => String(i + 1).padStart(2, '
   {pages > 0 && (
     <div class="pdfembed__pages">
       {nums.map((n) => (
-        <img src={`/pdfs/${slug}/page-${n}.png`} alt={`${title}, page ${Number(n)}`} loading="lazy" />
+        <img src={`/pdfs/${slug}/page-${n}.${ext}`} alt={`${title}, page ${Number(n)}`} loading="lazy" />
       ))}
     </div>
   )}

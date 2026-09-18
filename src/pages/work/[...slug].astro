@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import ReportFrame from '../../components/ReportFrame.astro';
 import PdfEmbed from '../../components/PdfEmbed.astro';
+import PdfSpread from '../../components/PdfSpread.astro';
 import NotebookSet from '../../components/NotebookSet.astro';
 
 export async function getStaticPaths() {
@@ -46,7 +47,9 @@ const fmt = (x: Date) => x.toLocaleDateString('en-GB', { year: 'numeric', month:
 
     {d.links.report && <ReportFrame src={d.links.report} title={`${d.title} — full analysis`} />}
     {d.notebooks?.length ? <NotebookSet slug={project.id} notebooks={d.notebooks} /> : null}
-    {d.links.pdf && <PdfEmbed slug={project.id} title={d.title} pages={d.pdfPages ?? 0} />}
+    {d.links.pdf && (d.pdfDisplay === 'spread'
+      ? <PdfSpread slug={project.id} title={d.title} pages={d.pdfPages ?? 0} />
+      : <PdfEmbed  slug={project.id} title={d.title} pages={d.pdfPages ?? 0} />)}
 
     {(d.links.code || d.links.live || d.links.slides) && (
       <p class="case__links">
