@@ -20,6 +20,13 @@ const projects = defineCollection({
     course: z.string().optional(),
     cover: image(),
     stat: z.object({ value: z.string(), label: z.string() }).optional(),
+    // Rendered reports in public/reports/<slug>/ — Quarto HTML, slide decks, etc.
+    reports: z.array(z.object({
+      file: z.string(),
+      title: z.string(),
+      kind: z.string().optional(),
+      note: z.string().optional(),
+    })).optional(),
     // Converted Jupyter notebooks in public/reports/<slug>/<file>.html
     notebooks: z.array(z.object({
       file: z.string(),

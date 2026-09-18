@@ -6,6 +6,7 @@ import ReportFrame from '../../components/ReportFrame.astro';
 import PdfEmbed from '../../components/PdfEmbed.astro';
 import PdfSpread from '../../components/PdfSpread.astro';
 import NotebookSet from '../../components/NotebookSet.astro';
+import ReportSet from '../../components/ReportSet.astro';
 
 export async function getStaticPaths() {
   const all = await getCollection('projects');
@@ -45,7 +46,8 @@ const fmt = (x: Date) => x.toLocaleDateString('en-GB', { year: 'numeric', month:
 
     <div class="case__body"><Content /></div>
 
-    {d.links.report && <ReportFrame src={d.links.report} title={`${d.title} — full analysis`} />}
+    {d.reports?.length ? <ReportSet slug={project.id} reports={d.reports} /> : null}
+    {!d.reports?.length && d.links.report && <ReportFrame src={d.links.report} title={`${d.title} — full analysis`} />}
     {d.notebooks?.length ? <NotebookSet slug={project.id} notebooks={d.notebooks} /> : null}
     {d.links.pdf && (d.pdfDisplay === 'spread'
       ? <PdfSpread slug={project.id} title={d.title} pages={d.pdfPages ?? 0} />

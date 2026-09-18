@@ -1,0 +1,69 @@
+---
+// Embeds one or more rendered reports from public/reports/<slug>/.
+// Mirrors NotebookSet: <details> so it works without JavaScript, lazy iframes so
+// a closed report costs nothing. A single report is open by default.
+const { slug, reports } = Astro.props;
+const only = reports.length === 1;
+---
+<section class="rset">
+  <h2 class="rset__head">{only ? 'Full analysis' : 'Documents'}</h2>
+  <p class="rset__intro">
+    {only
+      ? 'The complete write-up, rendered from the original Quarto source — code, output and figures.'
+      : 'The complete documents, rendered from their original sources. Open one to read it inline.'}
+  </p>
+  {reports.map((r, i) => (
+    <details class="rpt" open={i === 0}>
+      <summary class="rpt__summary">
+        <span class="rpt__kind">{r.kind ?? 'report'}</span>
+        <span class="rpt__title">{r.title}</span>
+        {r.note && <span class="rpt__note">{r.note}</span>}
+      </summary>
+      <div class="rpt__body">
+        <p class="rpt__bar">
+          <a href={`/reports/${slug}/${r.file}`} rel="noopener">Open full document ↗</a>
+        </p>
+        <iframe src={`/reports/${slug}/${r.file}`} title={r.title} loading="lazy"></iframe>
+      </div>
+    </details>
+  ))}
+</section>
+<style>
+  .rset { margin: var(--s-8) 0; }
+  .rset__head {
+    font-family: var(--face-mono); font-size: var(--step--1); font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-faint);
+    border-bottom: 1.5px solid var(--ink); padding-bottom: var(--s-2); margin: 0 0 var(--s-4);
+  }
+  .rset__intro { color: var(--ink-soft); max-width: var(--measure); margin: 0 0 var(--s-5); }
+  .rpt { border: 1px solid var(--rule); background: var(--ground-raised); margin-bottom: var(--s-3); }
+  .rpt__summary {
+    display: flex; gap: var(--s-4); align-items: baseline; flex-wrap: wrap;
+    padding: var(--s-4); cursor: pointer; list-style: none;
+  }
+  .rpt__summary::-webkit-details-marker { display: none; }
+  .rpt__summary::before {
+    content: "▸"; color: var(--ink-faint); flex: none;
+    transition: transform 0.15s ease; display: inline-block;
+  }
+  .rpt[open] .rpt__summary::before { transform: rotate(90deg); }
+  .rpt__summary:hover .rpt__title { color: var(--water); }
+  .rpt__kind {
+    font-family: var(--face-mono); font-size: 0.68rem; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-faint);
+    border: 1px solid var(--rule-strong); padding: 0 var(--s-2); border-radius: 2px;
+  }
+  .rpt__title { font-size: var(--step-0); }
+  .rpt__note { font-size: var(--step--1); color: var(--ink-faint); }
+  .rpt__body { border-top: 1px solid var(--rule); }
+  .rpt__bar {
+    margin: 0; padding: var(--s-2) var(--s-4); text-align: right;
+    font-family: var(--face-mono); font-size: var(--step--1);
+    border-bottom: 1px solid var(--rule);
+  }
+  .rpt__bar a { color: var(--ink-soft); }
+  .rpt iframe {
+    width: 100%; height: min(85vh, 900px); border: 0; display: block; background: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) { .rpt__summary::before { transition: none; } }
+</style>
