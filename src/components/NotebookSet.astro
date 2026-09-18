@@ -45,7 +45,7 @@ const { slug, notebooks, openFirst = true } = Astro.props;
     transition: transform 0.15s ease; display: inline-block;
   }
   .nb[open] .nb__summary::before { transform: rotate(90deg); }
-  .nb__summary:hover .nb__title { color: var(--water); }
+  .nb__summary:hover .nb__title { color: var(--accent); }
   .nb__n { font-family: var(--face-mono); font-size: var(--step--1); color: var(--ink-faint); }
   .nb__title { font-size: var(--step-0); }
   .nb__note { font-size: var(--step--1); color: var(--ink-faint); }

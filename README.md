@@ -114,7 +114,19 @@ rather than a screenshot of the site.
 
 ## Design
 
-Tokens are in `src/styles/tokens.css`. The light palette is defined on bare `:root`;
+Tokens are in `src/styles/tokens.css`. The palette is six brand colours plus
+neutrals derived from the indigo hue so they stay in family.
+
+**Contrast governs which colour does what.** Measured against the light ground,
+only electric indigo (6.17:1) passes AA for body text; medium slate blue (4.35:1)
+is large-text and UI only, and chartreuse (1.14:1), plum (1.89:1) and blaze
+orange (2.89:1) are fills only and must never carry small text on white. The
+orange is darkened to #d0570f where it needs to be legible on light. On the dark
+ground the order inverts: chartreuse (16.07:1), plum (9.72:1) and orange (6.35:1)
+all pass, while indigo is too dark and is used as a ground instead.
+
+Tokens are named by role — `--accent`, `--accent-soft`, `--highlight`, `--warn` —
+rather than by colour, so the same component works in both themes. The light palette is defined on bare `:root`;
 dark is redefined both under `prefers-color-scheme` and under `[data-theme="dark"]`,
 so a future toggle wins in either direction. Layout is responsive to 360 px, focus
 states are visible, and reduced motion is respected.

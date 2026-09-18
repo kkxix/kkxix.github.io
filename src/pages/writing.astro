@@ -81,7 +81,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month:
   }
   .note {
     max-width: var(--measure); color: var(--ink-soft); font-size: var(--step--1);
-    border-left: 2px solid var(--contour); padding-left: var(--s-4); margin: 0 0 var(--s-5);
+    border-left: 2px solid var(--highlight); padding-left: var(--s-4); margin: 0 0 var(--s-5);
   }
   .entries { list-style: none; margin: 0; padding: 0; max-width: 62ch; }
   .entry { border-top: 1px solid var(--rule); padding-block: var(--s-5); }
@@ -91,16 +91,16 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month:
     letter-spacing: 0.1em; color: var(--ink-faint); margin: 0 0 var(--s-3);
   }
   .pill { border: 1px solid currentColor; padding: 1px var(--s-2); border-radius: 2px; }
-  .pill--article  { color: var(--water); }
-  .pill--toolkit  { color: var(--contour); }
-  .pill--talk     { color: var(--survey); }
-  .pill--preprint { color: var(--contour); }
-  .pill--poster   { color: var(--contour); }
+  .pill--article  { color: var(--accent); }
+  .pill--toolkit  { color: var(--highlight); }
+  .pill--talk     { color: var(--warn); }
+  .pill--preprint { color: var(--highlight); }
+  .pill--poster   { color: var(--highlight); }
   .entry__title { font-size: var(--step-1); line-height: 1.25; margin: 0; font-weight: 600; }
   .entry__title a { text-decoration: none; border-bottom: 1.5px solid var(--rule-strong); }
-  .entry__title a:hover { color: var(--water); border-color: var(--water); }
+  .entry__title a:hover { color: var(--accent); border-color: var(--accent); }
   .entry__venue {
-    font-family: var(--face-mono); font-size: 0.72rem; color: var(--contour);
+    font-family: var(--face-mono); font-size: 0.72rem; color: var(--highlight);
     margin: var(--s-2) 0 0;
   }
   .entry__take { color: var(--ink-soft); margin: var(--s-3) 0 0; }
@@ -108,7 +108,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month:
   .entry__authors .is-me { color: var(--ink); font-weight: 600; }
   .entry__status {
     font-size: var(--step--1); color: var(--ink-soft);
-    border-left: 2px solid var(--contour); padding-left: var(--s-3);
+    border-left: 2px solid var(--highlight); padding-left: var(--s-3);
     margin: var(--s-3) 0 0;
   }
   .entry__byline {
@@ -120,5 +120,5 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month:
     font-family: var(--face-mono); font-size: var(--step--1); color: var(--ink-soft);
     border-bottom: 1.5px solid var(--rule-strong); text-decoration: none;
   }
-  .entry__links a:hover { color: var(--water); border-color: var(--water); }
+  .entry__links a:hover { color: var(--accent); border-color: var(--accent); }
 </style>

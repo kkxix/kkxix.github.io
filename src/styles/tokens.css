@@ -4,22 +4,25 @@
    system-preference and explicit-toggle blocks so either can win.
    --------------------------------------------------------------------------- */
 :root {
-  /* Ink and ground — warm paper, not pure white */
-  --ground:        #f7f5f0;
-  --ground-sunk:   #efece4;
-  --ground-raised: #fffefb;
-  --ink:           #1c1a17;
-  --ink-soft:      #4a463f;
-  --ink-faint:     #7d776c;
-  --rule:          #d8d3c7;
-  --rule-strong:   #b5ae9e;
+  /* Ground and ink — neutrals derived from the indigo hue so they stay in family */
+  --ground:        #fcfcfe;
+  --ground-sunk:   #f4f2fb;
+  --ground-raised: #ffffff;
+  --ink:           #17132a;
+  --ink-soft:      #4a4272;
+  --ink-faint:     #6d6690;
+  --rule:          #e2dff0;
+  --rule-strong:   #bdb6d8;
 
-  /* Cartographic accents: water, contour, survey red */
-  --water:         #2d5f7c;
-  --water-soft:    #7fa6bc;
-  --contour:       #9a6b3f;
-  --survey:        #b5432c;
-  --wash:          #e4ecef;
+  /* Accents. Contrast on --ground is noted; see the palette note below.
+     --accent is the only palette colour that passes AA for body text on white. */
+  --accent:        #6637ec;  /* electric indigo   6.17:1  body text ok      */
+  --accent-soft:   #8455fe;  /* medium slate blue 4.35:1  large text / UI    */
+  --highlight:     #ceff1b;  /* chartreuse        1.14:1  fills only        */
+  --plum:          #e8a6d6;  /* plum              1.89:1  fills only        */
+  --warn:          #d0570f;  /* blaze orange, darkened for light ground     */
+  --warn-pure:     #fc6715;  /* the palette orange, for fills               */
+  --wash:          #f0ecfd;
 
   /* Type */
   --face-text: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -41,41 +44,45 @@
   --gutter: clamp(1rem, 4vw, 3rem);
   --max: 76rem;
 
-  --focus: var(--survey);
+  --focus: var(--warn);
 }
 
 :root:not([data-theme="light"]) {
   @media (prefers-color-scheme: dark) {
-    --ground:        #14161a;
-    --ground-sunk:   #0e1013;
-    --ground-raised: #1c1f25;
-    --ink:           #eceae5;
-    --ink-soft:      #b8b3aa;
-    --ink-faint:     #857f75;
-    --rule:          #2c3138;
-    --rule-strong:   #454c56;
-    --water:         #7db4d4;
-    --water-soft:    #3d6b87;
-    --contour:       #c9925c;
-    --survey:        #e2694f;
-    --wash:          #1b2731;
+    --ground:        #12101c;
+    --ground-sunk:   #0c0a14;
+    --ground-raised: #1a1728;
+    --ink:           #f2f1f8;
+    --ink-soft:      #c3bfd6;
+    --ink-faint:     #8b86a3;
+    --rule:          #2a2540;
+    --rule-strong:   #443c66;
+    --accent:        #ceff1b;  /* chartreuse    16.07:1 */
+    --accent-soft:   #a88bff;  /* slate blue lightened 6.99:1 */
+    --highlight:     #e8a6d6;  /* plum           9.72:1 */
+    --plum:          #e8a6d6;
+    --warn:          #fc6715;  /* blaze orange   6.35:1 */
+    --warn-pure:     #fc6715;
+    --wash:          #1d1733;
   }
 }
 
 :root[data-theme="dark"] {
-  --ground:        #14161a;
-  --ground-sunk:   #0e1013;
-  --ground-raised: #1c1f25;
-  --ink:           #eceae5;
-  --ink-soft:      #b8b3aa;
-  --ink-faint:     #857f75;
-  --rule:          #2c3138;
-  --rule-strong:   #454c56;
-  --water:         #7db4d4;
-  --water-soft:    #3d6b87;
-  --contour:       #c9925c;
-  --survey:        #e2694f;
-  --wash:          #1b2731;
+  --ground:    #12101c;
+  --ground-sunk:   #0c0a14;
+  --ground-raised: #1a1728;
+  --ink:       #f2f1f8;
+  --ink-soft:    #c3bfd6;
+  --ink-faint:   #8b86a3;
+  --rule:      #2a2540;
+  --rule-strong:   #443c66;
+  --accent:    #ceff1b;  /* chartreuse  16.07:1 */
+  --accent-soft:   #a88bff;  /* slate blue lightened 6.99:1 */
+  --highlight:   #e8a6d6;  /* plum       9.72:1 */
+  --plum:      #e8a6d6;
+  --warn:      #fc6715;  /* blaze orange   6.35:1 */
+  --warn-pure:   #fc6715;
+  --wash:      #1d1733;
 }
 
 *, *::before, *::after { box-sizing: border-box; }

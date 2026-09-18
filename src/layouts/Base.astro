@@ -18,9 +18,9 @@ const { title } = Astro.props;
         <a class="legend__name" href="/">Katie Knox</a>
       </div>
       <nav class="legend__nav" aria-label="Sections">
-        <a href="/work"><span class="key key--water"></span>Work</a>
-        <a href="/writing"><span class="key key--contour"></span>Writing</a>
-        <a href="/about"><span class="key key--survey"></span>About</a>
+        <a href="/work"><span class="key key--accent"></span>Work</a>
+        <a href="/writing"><span class="key key--highlight"></span>Writing</a>
+        <a href="/about"><span class="key key--warn"></span>About</a>
         <a href="/cv"><span class="key key--rule"></span>CV</a>
       </nav>
       <dl class="legend__meta">
@@ -50,11 +50,11 @@ const { title } = Astro.props;
     display: flex; align-items: center; gap: var(--s-3);
     font-family: var(--face-ui); text-decoration: none; padding: var(--s-2) 0;
   }
-  .legend__nav a:hover { color: var(--water); }
+  .legend__nav a:hover { color: var(--accent); }
   .key { width: 1.15rem; height: 0.7rem; border: 1px solid var(--ink-faint); flex: none; }
-  .key--water { background: var(--water); }
-  .key--contour { background: var(--contour); }
-  .key--survey { background: var(--survey); }
+  .key--accent { background: var(--accent); }
+  .key--highlight { background: var(--highlight); }
+  .key--warn { background: var(--warn); }
   .key--rule { background: var(--rule-strong); }
   .legend__meta { margin: auto 0 0; display: grid; gap: var(--s-4); }
   .legend__meta dt {
@@ -64,8 +64,8 @@ const { title } = Astro.props;
   .legend__meta dd { margin: var(--s-1) 0 0; font-size: var(--step--1); }
   .main { padding: var(--s-7) var(--gutter) var(--s-9); min-width: 0; }
   .todo {
-    background: color-mix(in srgb, var(--contour) 18%, transparent);
-    border-bottom: 1.5px dashed var(--contour);
+    background: color-mix(in srgb, var(--highlight) 18%, transparent);
+    border-bottom: 1.5px dashed var(--highlight);
     font-family: var(--face-mono); font-size: var(--step-0);
   }
   @media print {
