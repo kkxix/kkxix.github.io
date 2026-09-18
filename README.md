@@ -104,8 +104,10 @@ pdfDisplay: spread
 
 ## The portrait
 
-Put a portrait at `src/assets/portrait/katie-knox.jpg` and it appears in the
-sidebar under the name. The import is optional, so the site builds without one.
+Any image in `src/assets/portrait/` becomes the sidebar portrait — the filename
+does not matter, and the site still builds when the folder is empty. It is cropped
+square onto the head and shoulders, and capped at 7rem on narrow screens so it
+does not fill a phone's first screen.
 
 ## The CV
 
