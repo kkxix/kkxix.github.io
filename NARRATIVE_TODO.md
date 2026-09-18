@@ -6,10 +6,8 @@ from the commit history at the owner's direction; the rest were stated directly.
 
 ## Blocking the site going live
 - [ ] src/pages/index.astro:§banner — positioning statement, the first thing a reader sees
-- [ ] layout + page titles — decide the display name and replace the `[NAME]` token
 - [ ] src/pages/about.astro:§bio — two or three paragraphs
-- [ ] src/pages/about.astro:§contact — which contact details the site carries
-- [ ] src/pages/about.astro:§cv — export CV to PDF into public/cv/ and link it
+- [ ] src/pages/about.astro:§contact and src/pages/cv.astro — which contact details the site carries. The source CV lists a personal Gmail address; the site currently carries none
 
 ## Per project
 - [ ] Nairobi notebooks 0302 and 0303 were run on Colab and saved with no outputs.

@@ -1,0 +1,169 @@
+---
+import Base from '../layouts/Base.astro';
+import AuthorTodo from '../components/AuthorTodo.astro';
+
+const education = [
+  { title: 'Master of City Planning', org: 'University of Pennsylvania', dates: '2025 – 2027',
+    note: 'In progress. Smart City concentration, focused on urban spatial analysis.' },
+  { title: 'Bachelor of Arts', org: 'Swarthmore College', dates: '2017 – 2022',
+    note: 'Sigma Xi, The Scientific Research Honor Society.' },
+];
+
+const experience = [
+  {
+    title: 'Data and Research Manager', org: 'National Digital Inclusion Alliance', dates: '2022 – present',
+    points: [
+      'Mixed-method programme evaluation for national digital equity initiatives, including the National Digital Navigator Corps — survey design, focus groups, statistical analysis and data visualisation.',
+      'Managed and standardised multi-site data collection across 18 organisations, including Tribal governments and rural-serving nonprofits, developing reporting frameworks adaptable across institutional and geographic contexts.',
+      'Original research on digital inequities affecting people of colour with disabilities, using federal datasets and primary data collection.',
+      'Translated spatial and administrative datasets into public-facing research products — StoryMaps, reports — for policymakers and practitioners.',
+      'Presented findings at national webinars and conferences on digital inclusion and public data use.',
+    ],
+  },
+  {
+    title: 'Web Development Fellow', org: 'Penn Hill Group', dates: '2020 – 2021',
+    points: [
+      'Built the State Digital Equity Scorecard in React and Node.js for Microsoft Corporate, External and Legal Affairs, to help state leaders meet new Infrastructure Investment and Jobs Act requirements.',
+    ],
+  },
+  {
+    title: 'Research Assistant', org: 'Gerrymandering Research Lab, Swarthmore College', dates: 'Summer 2020',
+    points: [
+      'Published voting district election data on the open-source mapping tool Districtr.',
+      'Co-authored research on political gerrymandering in Maine and New Hampshire.',
+    ],
+  },
+  {
+    title: 'Student Developer', org: 'Swarthmore College', dates: 'Autumn 2018 – Autumn 2019',
+    points: [
+      "Developed Swarthmore College's Civic Engagement Map, the Bach Chorale Workshop, and the 1847 Philadelphia African-American Census data project.",
+    ],
+  },
+];
+
+const skills = [
+  ['Programming and analysis', 'R, Python (pandas), spatial statistics, machine learning, remote sensing, deep learning'],
+  ['GIS and spatial', 'ArcGIS, QGIS'],
+  ['Web development', 'React, Node.js, JavaScript'],
+  ['Methods', 'Programme evaluation, survey design, mixed-method research'],
+  ['Tools', 'Git, Excel, PowerPoint, Canva, Tableau, Adobe Illustrator and InDesign'],
+  ['Languages', 'English (fluent), French (B2)'],
+];
+
+const papers = [
+  { cite: 'Asgari, S., Basewitz, Q., Bergmann, E., Brogsol, J., Cox, N., Davis, D., Kampel, M., Keating, B., Knox, K., Lam, A., Lopez-Nava, J., Paige, J., Pitock, N., Song, V., and Torrance, D. (2020). Assessing congressional districting in Maine and New Hampshire.',
+    venue: 'arXiv preprint arXiv:2011.06555', url: 'https://arxiv.org/abs/2011.06555' },
+  { cite: 'Ferguson, T., Huang, A., Knox, K., and Lim, S. Parallelizing the RNA Secondary Structure Dynamic Programming Problem.',
+    venue: 'Poster presentation, Consortium for Computing in Colleges Northeast Region, 2022', url: '/pdfs/publications/rna-parallelization-cs87.pdf' },
+];
+---
+<Base title="CV — Katie Knox">
+  <div class="cv">
+    <header class="cv__head">
+      <h1 class="cv__name">Katie Knox</h1>
+      <p class="cv__sub">Urban planning and spatial analysis · Philadelphia</p>
+      <p class="cv__actions no-print">
+        <a href="/cv/katie-knox-cv.pdf">Download PDF ↓</a>
+      </p>
+    </header>
+
+    <AuthorTodo note="Contact details are deliberately omitted. The source CV lists a personal Gmail address; decide what this page should carry before the site goes public." />
+
+    <section class="cv__sec">
+      <h2>Education</h2>
+      {education.map((e) => (
+        <div class="entry">
+          <div class="entry__main">
+            <p class="entry__title">{e.title}</p>
+            <p class="entry__org">{e.org}</p>
+            <p class="entry__note">{e.note}</p>
+          </div>
+          <p class="entry__dates">{e.dates}</p>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv__sec">
+      <h2>Experience</h2>
+      {experience.map((e) => (
+        <div class="entry">
+          <div class="entry__main">
+            <p class="entry__title">{e.title}</p>
+            <p class="entry__org">{e.org}</p>
+            <ul class="entry__points">{e.points.map((p) => <li>{p}</li>)}</ul>
+          </div>
+          <p class="entry__dates">{e.dates}</p>
+        </div>
+      ))}
+    </section>
+
+    <section class="cv__sec">
+      <h2>Skills</h2>
+      <dl class="skills">
+        {skills.map(([k, v]) => <div><dt>{k}</dt><dd>{v}</dd></div>)}
+      </dl>
+    </section>
+
+    <section class="cv__sec">
+      <h2>Papers and presentations</h2>
+      <ul class="papers">
+        {papers.map((p) => (
+          <li>
+            <span>{p.cite}</span>{' '}
+            <a href={p.url} rel="noopener">{p.venue}</a>
+          </li>
+        ))}
+      </ul>
+      <p class="papers__note no-print">
+        Neither has been peer reviewed. See <a href="/writing">Writing</a> for context.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .cv { max-width: 52rem; }
+  .cv__head { border-bottom: 1.5px solid var(--ink); padding-bottom: var(--s-4); margin-bottom: var(--s-6); }
+  .cv__name { font-size: var(--step-3); margin: 0; letter-spacing: -0.01em; }
+  .cv__sub { color: var(--ink-soft); margin: var(--s-2) 0 0; }
+  .cv__actions { margin: var(--s-4) 0 0; font-family: var(--face-mono); font-size: var(--step--1); }
+  .cv__actions a { border-bottom: 1.5px solid var(--rule-strong); text-decoration: none; }
+  .cv__actions a:hover { color: var(--water); border-color: var(--water); }
+  .cv__sec { margin-bottom: var(--s-7); }
+  .cv__sec h2 {
+    font-family: var(--face-mono); font-size: var(--step--1); font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-faint);
+    border-bottom: 1px solid var(--rule); padding-bottom: var(--s-2); margin: 0 0 var(--s-5);
+  }
+  .entry {
+    display: grid; grid-template-columns: 1fr 9rem; gap: var(--s-4);
+    margin-bottom: var(--s-5);
+  }
+  .entry__title { font-weight: 600; margin: 0; }
+  .entry__org { color: var(--ink-soft); margin: var(--s-1) 0 0; }
+  .entry__note { color: var(--ink-soft); font-size: var(--step--1); margin: var(--s-2) 0 0; }
+  .entry__dates {
+    font-family: var(--face-mono); font-size: var(--step--1);
+    color: var(--ink-faint); text-align: right; margin: 0;
+  }
+  .entry__points { margin: var(--s-3) 0 0; padding-left: 1.1rem; }
+  .entry__points li { margin-bottom: var(--s-2); }
+  .skills { margin: 0; display: grid; gap: var(--s-4); }
+  .skills dt {
+    font-family: var(--face-mono); font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--ink-faint);
+  }
+  .skills dd { margin: var(--s-1) 0 0; }
+  .papers { margin: 0; padding-left: 1.1rem; }
+  .papers li { margin-bottom: var(--s-4); }
+  .papers a { color: var(--water); }
+  .papers__note { font-size: var(--step--1); color: var(--ink-faint); margin: var(--s-4) 0 0; }
+  @media (max-width: 40rem) {
+    .entry { grid-template-columns: 1fr; }
+    .entry__dates { text-align: left; }
+  }
+  @media print {
+    .no-print { display: none !important; }
+    .cv { max-width: none; }
+  }
+</style>

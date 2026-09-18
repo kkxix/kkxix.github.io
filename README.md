@@ -102,6 +102,16 @@ pdfPages: 105
 pdfDisplay: spread
 ```
 
+## The CV
+
+`src/pages/cv.astro` holds the CV as structured content, and
+`./scripts/build-cv-pdf.sh` prints `public/cv/katie-knox-cv.pdf` from that page
+with headless Chrome. The download is generated from the page, so the two cannot
+drift apart — edit the page, re-run the script.
+
+Print styles in the layout hide the navigation rail, so the PDF is the document
+rather than a screenshot of the site.
+
 ## Design
 
 Tokens are in `src/styles/tokens.css`. The light palette is defined on bare `:root`;
