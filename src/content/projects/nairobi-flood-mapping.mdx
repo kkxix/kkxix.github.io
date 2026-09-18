@@ -17,8 +17,8 @@ notebooks:
   - { file: "0201_RF", title: "Random forest flood detection", note: "SAR, optical and fused models" }
   - { file: "0202_MNDWI_RF_comparisons", title: "MNDWI and random forest comparison" }
   - { file: "0301_deep_learning_baseline_local", title: "Deep learning baseline (local)" }
-  - { file: "0302_deep_learning_baseline", title: "Deep learning baseline" }
-  - { file: "0303_DL_Application_on_Nairobi", title: "Applying the model to Nairobi" }
+  - { file: "0302_deep_learning_baseline", title: "Deep learning baseline", note: "code only — run on Colab, outputs not saved" }
+  - { file: "0303_DL_Application_on_Nairobi", title: "Applying the model to Nairobi", note: "code only — see Results below for its figures" }
 ---
 
 Six deep-learning experiments benchmarked against threshold and random-forest
@@ -26,3 +26,30 @@ baselines, with a threshold sweep over the final model.
 
 {/* AUTHOR: state your individual role on this team, and say in two sentences why
     flood extent mapping matters for planning in Nairobi specifically. */}
+
+import Gallery from '../../components/Gallery.astro';
+import iou from '../../assets/nairobi/all_methods_iou.png';
+import training from '../../assets/nairobi/ml_training.png';
+import before from '../../assets/nairobi/01_dl_before_water_probability.png';
+import after from '../../assets/nairobi/02_dl_after_water_probability.png';
+import change from '../../assets/nairobi/07_dl_water_probability_change.png';
+import proxy from '../../assets/nairobi/03_dl_flood_proxy.png';
+import gtUnion from '../../assets/nairobi/06_combined_gt_union.png';
+import overlayGs from '../../assets/nairobi/08_overlay_groundsource.png';
+import overlayUn from '../../assets/nairobi/09_overlay_unstats.png';
+
+<Gallery
+  title="Results"
+  intro="The final two notebooks were run on Colab and saved without their outputs, so their figures are missing from the notebooks below. These are the outputs they produced, taken from the project's results folder."
+  figures={[
+    { src: iou,        caption: "Method agreement across SAR, optical, ML and UNOSAT" },
+    { src: training,   caption: "Machine learning training curves" },
+    { src: before,     caption: "Deep learning water probability, before the flood" },
+    { src: after,      caption: "Deep learning water probability, after the flood" },
+    { src: change,     caption: "Change in water probability, before to after" },
+    { src: proxy,      caption: "Deep learning flood proxy" },
+    { src: gtUnion,    caption: "Combined ground truth, union of sources" },
+    { src: overlayGs,  caption: "Prediction overlaid on groundsource reference" },
+    { src: overlayUn,  caption: "Prediction overlaid on UNStats reference" },
+  ]}
+/>

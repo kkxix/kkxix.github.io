@@ -8,6 +8,10 @@
 - [ ] src/pages/about.astro:§cv — export CV to PDF into public/cv/ and link it
 
 ## Per project
+- [ ] Nairobi notebooks 0302 and 0303 were run on Colab and saved with no outputs.
+      Every copy on disk and in git history is code-only. If the executed versions
+      still exist in a Colab account, re-saving them with outputs would let the
+      notebooks render in full instead of relying on the Results gallery
 - [ ] philadelphia-wifi-access — rewrite the opening from results_summary.md
 - [ ] nairobi-flood-mapping — individual role; why flood mapping matters for Nairobi
 - [ ] bustling-bustleton — individual role on the six-person team
