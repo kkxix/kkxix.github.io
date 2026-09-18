@@ -1,0 +1,63 @@
+---
+// Embeds a set of converted Jupyter notebooks from public/reports/<slug>/.
+// Uses <details> so it works with JavaScript disabled; iframes are lazy, so
+// closed notebooks cost nothing to load.
+const { slug, notebooks, openFirst = true } = Astro.props;
+---
+<section class="nbset">
+  <h2 class="nbset__head">Notebooks</h2>
+  <p class="nbset__intro">
+    The full analysis, rendered from the original Jupyter notebooks — code, output
+    and figures. Open one to read it inline.
+  </p>
+  {notebooks.map((nb, i) => (
+    <details class="nb" open={openFirst && i === 0}>
+      <summary class="nb__summary">
+        <span class="nb__n">{String(i + 1).padStart(2, '0')}</span>
+        <span class="nb__title">{nb.title}</span>
+        {nb.note && <span class="nb__note">{nb.note}</span>}
+      </summary>
+      <div class="nb__body">
+        <p class="nb__bar">
+          <a href={`/reports/${slug}/${nb.file}.html`} rel="noopener">Open full notebook ↗</a>
+        </p>
+        <iframe src={`/reports/${slug}/${nb.file}.html`} title={nb.title} loading="lazy"></iframe>
+      </div>
+    </details>
+  ))}
+</section>
+<style>
+  .nbset { margin: var(--s-8) 0; }
+  .nbset__head {
+    font-family: var(--face-mono); font-size: var(--step--1); font-weight: 400;
+    text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-faint);
+    border-bottom: 1.5px solid var(--ink); padding-bottom: var(--s-2); margin: 0 0 var(--s-4);
+  }
+  .nbset__intro { color: var(--ink-soft); max-width: var(--measure); margin: 0 0 var(--s-5); }
+  .nb { border: 1px solid var(--rule); background: var(--ground-raised); margin-bottom: var(--s-3); }
+  .nb__summary {
+    display: flex; gap: var(--s-4); align-items: baseline; flex-wrap: wrap;
+    padding: var(--s-4); cursor: pointer; list-style: none;
+  }
+  .nb__summary::-webkit-details-marker { display: none; }
+  .nb__summary::before {
+    content: "▸"; color: var(--ink-faint); flex: none;
+    transition: transform 0.15s ease; display: inline-block;
+  }
+  .nb[open] .nb__summary::before { transform: rotate(90deg); }
+  .nb__summary:hover .nb__title { color: var(--water); }
+  .nb__n { font-family: var(--face-mono); font-size: var(--step--1); color: var(--ink-faint); }
+  .nb__title { font-size: var(--step-0); }
+  .nb__note { font-size: var(--step--1); color: var(--ink-faint); }
+  .nb__body { border-top: 1px solid var(--rule); }
+  .nb__bar {
+    margin: 0; padding: var(--s-2) var(--s-4);
+    font-family: var(--face-mono); font-size: var(--step--1);
+    border-bottom: 1px solid var(--rule); text-align: right;
+  }
+  .nb__bar a { color: var(--ink-soft); }
+  .nb iframe {
+    width: 100%; height: min(80vh, 820px); border: 0; display: block; background: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) { .nb__summary::before { transition: none; } }
+</style>

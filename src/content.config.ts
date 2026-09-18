@@ -20,6 +20,12 @@ const projects = defineCollection({
     course: z.string().optional(),
     cover: image(),
     stat: z.object({ value: z.string(), label: z.string() }).optional(),
+    // Converted Jupyter notebooks in public/reports/<slug>/<file>.html
+    notebooks: z.array(z.object({
+      file: z.string(),
+      title: z.string(),
+      note: z.string().optional(),
+    })).optional(),
     links: z.object({
       code: z.string().url().optional(),
       report: z.string().optional(),

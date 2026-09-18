@@ -18,6 +18,10 @@ it, and a stale server will keep serving old content — including silently igno
 new content collection. Use `npx astro dev stop` before restarting, or you will chase
 changes that appear not to apply.
 
+Changes to `src/content.config.ts` in particular may not reach the dev server even
+after a restart. When dev and `npm run build` disagree, **trust the build**: run
+`npm run build && npm run preview` and check there. That is what actually deploys.
+
 ## Build guards
 
 `npm run build` fails if either guard trips:
@@ -46,10 +50,21 @@ Rendered analyses live in `public/reports/<slug>/index.html` and are framed by
 - **Quarto**: render with `embed-resources: true` so the output is one self-contained
   file, then copy it in. Without that flag the HTML depends on a sibling `_files`
   directory and will deploy broken.
-- **Jupyter notebooks**: `jupyter nbconvert --to html --embed-images`. Notebooks that
-  carry stale `widgets` metadata without a `state` key crash nbconvert with
-  `KeyError: 'state'` — strip `metadata.widgets` from the `.ipynb` first. Notebooks
+- **Jupyter notebooks**: use `./scripts/notebooks-to-html.sh <notebook-dir> <slug>`,
+  which converts every notebook in a directory to self-contained HTML in
+  `public/reports/<slug>/`. It strips `metadata.widgets` into a temp copy first:
+  notebooks carrying stale widget metadata without a `state` key crash nbconvert
+  with `KeyError: 'state'`. Source notebooks are never modified. Notebooks
   containing Folium maps pull Leaflet from a CDN at view time.
+
+  Declare them in the project's frontmatter and `NotebookSet` embeds the whole set
+  inline, each in a `<details>` so it works without JavaScript and closed notebooks
+  cost nothing to load:
+
+  ```yaml
+  notebooks:
+    - { file: "0201_RF", title: "Random forest flood detection", note: "SAR and optical" }
+  ```
 
 Link the report with an **explicit `index.html`**:
 
