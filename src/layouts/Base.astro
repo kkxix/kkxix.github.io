@@ -1,5 +1,14 @@
 ---
 import '../styles/tokens.css';
+import { Image } from 'astro:assets';
+// Drop a portrait at src/assets/portrait/katie-knox.jpg and it appears in the
+// sidebar. The import is optional so the site builds without one.
+let portrait: ImageMetadata | null = null;
+try {
+  portrait = (await import('../assets/portrait/katie-knox.jpg')).default;
+} catch {
+  portrait = null;
+}
 interface Props { title: string; section?: 'work' | 'writing' | 'about' | 'cv' | null }
 const { title, section = null } = Astro.props;
 ---
@@ -16,9 +25,13 @@ const { title, section = null } = Astro.props;
       <div>
         <p class="legend__eyebrow">Portfolio</p>
         <a class="legend__name" href="/">Katie Knox</a>
+        {portrait && (
+          <Image class="legend__portrait" src={portrait} alt="Katie Knox"
+                 widths={[220, 440]} sizes="14rem" loading="eager" />
+        )}
       </div>
       <nav class="legend__nav" aria-label="Sections">
-        <a href="/work" data-section="work"><span class="key key--section"></span>Work</a>
+        <a href="/work" data-section="work"><span class="key key--chartreuse"></span>Work</a>
         <a href="/writing" data-section="writing"><span class="key key--section"></span>Writing</a>
         <a href="/about" data-section="about"><span class="key key--section"></span>About</a>
         <a href="/cv" data-section="cv"><span class="key key--section"></span>CV</a>
@@ -45,6 +58,11 @@ const { title, section = null } = Astro.props;
     font-size: var(--step-2); line-height: 1.05; letter-spacing: -0.01em;
     text-decoration: none; display: inline-block;
   }
+  .legend__portrait {
+    width: 100%; height: auto; display: block;
+    margin-top: var(--s-4); border-radius: var(--s-2);
+    aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%;
+  }
   .legend__nav { display: flex; flex-direction: column; gap: var(--s-3); }
   .legend__nav a {
     display: flex; align-items: center; gap: var(--s-3);
@@ -55,6 +73,7 @@ const { title, section = null } = Astro.props;
   /* Each swatch takes its own section's accent, so the key matches the colour
      that page actually uses. */
   .key--section { background: var(--accent); }
+  .key--chartreuse { background: var(--highlight-bg); }
   .legend__meta { margin: auto 0 0; display: grid; gap: var(--s-4); }
   .legend__meta dt {
     font-family: var(--face-mono); font-size: 0.72rem; text-transform: uppercase;

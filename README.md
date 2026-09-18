@@ -102,6 +102,11 @@ pdfPages: 105
 pdfDisplay: spread
 ```
 
+## The portrait
+
+Put a portrait at `src/assets/portrait/katie-knox.jpg` and it appears in the
+sidebar under the name. The import is optional, so the site builds without one.
+
 ## The CV
 
 `src/pages/cv.astro` holds the CV as structured content, and

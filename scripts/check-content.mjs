@@ -6,8 +6,11 @@ const FORBIDDEN = [
   /\bMAS\b/, /MAS_codebase/i,
   /djemkati/i, /manuscript archive/i,
   /plurilateral/i, /\bOCP\b/, /\bOAP\b/,
-  // water-resilience work, confirmed excluded 2026-09-15
-  /water resilien/i, /lassiter/i, /water systems lab/i, /\bsalinity\b/i,
+  // The water-resilience thesis and its codebase stay excluded from the
+  // portfolio. The owner's current employment in that lab is on the CV at their
+  // instruction, so the supervisor's name is no longer blocked — the thesis
+  // itself still is.
+  /water resilien/i, /water systems lab/i, /\bsalinity\b/i,
 ];
 const ROOTS = ['src/content', 'src/pages', 'src/components', 'src/layouts'];
 
