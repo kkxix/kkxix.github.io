@@ -16,6 +16,16 @@
 - [ ] philadelphia-eviction-model — summary; settle the ethics question first
 - [ ] indego-demand-forecast — summary drawing on the critical reflection
 
+## Publications
+- [ ] The RNA paper is hosted here as a PDF; it has no other public home. Confirm the
+      three co-authors (Tillie Ferguson, Alice Huang, Sojin Lim) are content for the
+      course report to be published on a personal site
+- [ ] Resume cites the RNA author order as "Huang, Ferguson, Knox, Lim" but the paper
+      itself reads "Tillie Ferguson, Alice Huang, Katie Knox, Sojin Lim". The site
+      uses the paper. Confirm which is right
+- [ ] Resume cites the RNA poster as CCSCNE 2022; the PDF is a CS87 course report.
+      Site says both. Confirm the poster date
+
 ## Decisions
 - [ ] Which repositories become public, and when (all six are private and carry open AUTHOR markers)
 - [ ] Co-author consent: home value + eviction (Abraham, Levin), Nairobi (Xu, Ezra),

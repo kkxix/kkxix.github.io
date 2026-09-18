@@ -42,11 +42,18 @@ const writing = defineCollection({
     title: z.string(),
     outlet: z.string(),
     date: z.date(),
-    url: z.string().url(),
+    // Either an external URL, a local PDF under public/, or both.
+    url: z.string().url().optional(),
+    pdf: z.string().optional(),
     byline: z.string(),
-    type: z.enum(['article','report','toolkit','talk']),
+    authors: z.array(z.string()).optional(),
+    // 'preprint' and 'poster' are deliberately distinct from 'article':
+    // neither has been through peer review, and the page says so.
+    type: z.enum(['article','report','toolkit','talk','preprint','poster']),
+    peerReviewed: z.boolean().default(false),
     takeaway: z.string().optional(),
-  }),
+    venueNote: z.string().optional(),
+  }).refine((d) => d.url || d.pdf, { message: 'writing entries need a url or a pdf' }),
 });
 
 export const collections = { projects, writing };
