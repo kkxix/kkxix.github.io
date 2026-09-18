@@ -11,14 +11,12 @@ const roman = ['PL. I','PL. II','PL. III','PL. IV','PL. V','PL. VI','PL. VII','P
 ---
 <Base title="Katie Knox — planning and spatial analysis">
   <header class="banner">
-    <p class="banner__lede">
-      {/* AUTHOR: short bio — a few lines introducing yourself. This is the landing
-          page and there is no About page, so this and the CV carry the whole
-          introduction. */}
-      <span class="todo">Bio needed</span>
-    </p>
-    <p class="banner__sub">
-      Selected work in planning analysis, spatial data science and applied research.
+    <h1 class="banner__tagline">Equitable access to essential infrastructure</h1>
+    <p class="banner__bio">
+      Urban planner and data scientist working on infrastructure access, from
+      broadband, to shelter, to flood risk. I am motivated by the question of who
+      gets left out of essential infrastructure, how data can become evidence, and
+      how we should act to make our environments livable for everyone.
     </p>
   </header>
 
@@ -34,9 +32,19 @@ const roman = ['PL. I','PL. II','PL. III','PL. IV','PL. V','PL. VI','PL. VII','P
 </Base>
 
 <style>
-  .banner { max-width: 54ch; margin-bottom: var(--s-8); }
-  .banner__lede { font-size: var(--step-3); line-height: 1.15; margin: 0; text-wrap: balance; }
-  .banner__sub { color: var(--ink-soft); margin: var(--s-4) 0 0; }
+  .banner { max-width: 60ch; margin-bottom: var(--s-8); }
+  .banner__tagline {
+    display: inline-block;
+    background: var(--highlight-bg);
+    color: var(--highlight-ink);
+    font-size: var(--step-2); line-height: 1.2; font-weight: 600;
+    letter-spacing: -0.01em; text-wrap: balance;
+    margin: 0; padding: 0.3em 0.7em; border-radius: 999px;
+  }
+  .banner__bio {
+    font-size: var(--step-1); line-height: 1.45; color: var(--ink);
+    margin: var(--s-5) 0 0; max-width: 52ch; text-wrap: pretty;
+  }
   .rule-head {
     font-family: var(--face-mono); font-size: var(--step--1); font-weight: 400;
     text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-faint);

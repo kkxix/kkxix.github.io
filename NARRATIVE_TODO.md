@@ -10,7 +10,9 @@ branch. Its background and names sections are not duplicated anywhere, so the CV
 and the home page bio now have to carry that ground.
 
 ## Blocking the site going live
-- [ ] src/pages/index.astro:§banner — short bio. This is the landing page and there is no About page, so this and the CV carry the whole introduction
+The landing page bio is written. What remains below is optional polish, not a
+blocker — the site can go public as it stands.
+
 
 ## Per project
 - [ ] Nairobi notebooks 0302 and 0303 were run on Colab and saved with no outputs.
